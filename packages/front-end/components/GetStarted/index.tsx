@@ -55,56 +55,56 @@ type AdvancedFeature = {
 const advancedFeatureList: AdvancedFeature[] = [
   {
     imgUrl: "/images/get-started/advanced/metrics.jpg",
-    title: "Metric Groups",
-    description: "Easily reuse sets of metrics",
+    title: "指标分组",
+    description: "轻松重用多组指标",
     docSection: "metricGroups",
     commercialFeature: "metric-groups",
   },
   {
     imgUrl: "/images/get-started/advanced/features.jpg",
-    title: "Dev Tools",
-    description: "Debug feature flags & experiments",
+    title: "开发工具",
+    description: "调试功能标志和实验",
     docSection: "devTools",
   },
   {
     imgUrl: "/images/get-started/advanced/archetypes.png",
-    title: "Archetype Overview",
-    description: "Simulate the result of targeting rules",
+    title: "原型概述",
+    description: "模拟定位规则的结果",
     docSection: "archetypes",
     commercialFeature: "archetypes",
   },
   {
     imgUrl: "/images/get-started/advanced/custom-roles.png",
-    title: "Custom Roles",
-    description: "Define fine-grained permission control",
+    title: "自定义角色",
+    description: "定义细粒度的权限控制",
     docSection: "customRoles",
     commercialFeature: "custom-roles",
   },
   {
     imgUrl: "/images/get-started/advanced/teams.png",
-    title: "Teams",
-    description: "Manage member permissions",
+    title: "团队",
+    description: "管理成员权限",
     docSection: "team",
     commercialFeature: "teams",
   },
   {
     imgUrl: "/images/get-started/advanced/code-refs.png",
-    title: "Code Refs",
-    description: "See exactly where flags appear in code",
+    title: "代码引用",
+    description: "准确定位标志在代码中的位置",
     docSection: "codeReferences",
     commercialFeature: "code-references",
   },
   {
     imgUrl: "/images/get-started/advanced/feature-flag.png", // don't have an image for this yet "/images/get-started/advanced/data-pipeline-mode.png",
-    title: "Data Pipeline Mode",
-    description: "Use temp tables for intermediate steps",
+    title: "数据管道模式",
+    description: "使用临时表进行中间步骤",
     docSection: "pipelineMode",
     commercialFeature: "pipeline-mode",
   },
   {
     imgUrl: "/images/get-started/advanced/fact-tables.png",
-    title: "Query Optimization",
-    description: "Improve SQL performance and reduce costs",
+    title: "查询优化",
+    description: "提高 SQL 性能并降低成本",
     docSection: "queryOptimization",
   },
 ];
@@ -167,8 +167,8 @@ const GetStartedAndHomePage = (): React.ReactElement => {
     if (isCloud()) {
       advancedFeatureListWithAnalytics.push({
         imgUrl: "/images/get-started/advanced/feature-flag.png",
-        title: "Feature Flag Analytics",
-        description: "View flag evaluations in real time",
+        title: "功能标志分析",
+        description: "实时查看标志评估",
         docSection: "managedWarehouseTracking",
         commercialFeature: "managed-warehouse",
       });
@@ -196,7 +196,7 @@ const GetStartedAndHomePage = (): React.ReactElement => {
       )}
       {openNewFeatureFlagModal && (
         <FeatureModal
-          cta={"Create"}
+          cta={"创建"}
           close={() => setOpenNewFeatureFlagModal(false)}
           onSuccess={async (feature) => {
             const url = `/features/${feature.id}${
@@ -220,13 +220,13 @@ const GetStartedAndHomePage = (): React.ReactElement => {
         {orgIsUsingFeatureOrExperiment && (
           <Grid columns={`minmax(0, 1fr) ${DOCUMENTATION_SIDEBAR_WIDTH}`}>
             <Text size="7" weight="regular" mb="5" as="div">
-              Home
+              主页
             </Text>
             <Flex justify={{ initial: "end", sm: "start" }} align="center">
               <DropdownMenu
                 trigger={
                   <Button icon={<PiCaretDownFill />} iconPosition="right">
-                    Create
+                    创建
                   </Button>
                 }
               >
@@ -235,14 +235,14 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                     setOpenNewFeatureFlagModal(true);
                   }}
                 >
-                  Feature Flag
+                  功能标志
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => {
                     setOpenNewExperimentModal(true);
                   }}
                 >
-                  Experiment
+                  实验
                 </DropdownMenuItem>
               </DropdownMenu>
             </Flex>
@@ -250,7 +250,7 @@ const GetStartedAndHomePage = (): React.ReactElement => {
         )}
         {!orgIsUsingFeatureOrExperiment && (
           <Text size="4" weight="medium" mb="3" as="div">
-            Get Started
+            入门
           </Text>
         )}
         <Grid
@@ -274,7 +274,7 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                         weight="medium"
                         style={{ color: "var(--color-text-mid)" }}
                       >
-                        EXPLORE ADVANCED FEATURES
+                        探索高级功能
                       </Text>
                     </Box>
                     <Flex direction={{ initial: "column", sm: "row" }} gap="4">
@@ -300,7 +300,7 @@ const GetStartedAndHomePage = (): React.ReactElement => {
               >
                 {orgIsUsingFeatureOrExperiment && (
                   <Text size="4" weight="medium" mb="3" as="div">
-                    Get Started
+                    入门
                   </Text>
                 )}
                 {orgIsUsingFeatureOrExperiment && (
@@ -308,15 +308,14 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                     variant="ghost"
                     onClick={() => setShowGettingStarted(!showGettingStarted)}
                   >
-                    {showGettingStarted ? "Hide Details" : "Show Details"}
+                    {showGettingStarted ? "隐藏详情" : "显示详情"}
                   </Button>
                 )}
               </Flex>
               {!showGettingStarted && (
                 <Callout status="info" size="md" mb="4">
                   <Text size="2">
-                    Customize your account setup and learn how to get started
-                    with GrowthBook.
+                    自定义您的帐户设置，并了解如何开始使用 GrowthBook。
                   </Text>
                 </Callout>
               )}
@@ -324,13 +323,13 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                 <>
                   {showSetUpFlow && (
                     <Callout status="wizard" size="md" mb="6">
-                      Connect to your SDK to get started.{" "}
+                      连接到您的 SDK 即可开始。{" "}
                       <Link
                         href="/setup"
                         className="font-weight-bold"
                         style={{ color: "inherit" }}
                       >
-                        Launch the setup flow
+                        启动设置流程
                       </Link>{" "}
                       <PiArrowSquareOut />
                     </Callout>
@@ -352,14 +351,14 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                   <Box mb="6">
                     <Box mb="3">
                       <Text size="1" weight="bold">
-                        PRODUCT OVERVIEW
+                        产品概述
                       </Text>
                     </Box>
 
                     <Flex direction={{ initial: "column", sm: "row" }} gap="4">
                       <OverviewCard
                         imgUrl="/images/get-started/thumbnails/intro-to-growthbook.svg"
-                        hoverText="Launch Video Player"
+                        hoverText="启动视频播放器"
                         onClick={() => setShowVideoId("b4xUnDGRKRQ")}
                         playTime={5}
                         type="video"
@@ -367,14 +366,14 @@ const GetStartedAndHomePage = (): React.ReactElement => {
 
                       <OverviewCard
                         imgUrl="/images/get-started/thumbnails/quantile-metrics-blog.png"
-                        hoverText="View Blog Post"
+                        hoverText="查看博客文章"
                         href="https://blog.growthbook.io/measuring-a-b-test-impacts-on-website-latency-using-quantile-metrics-in-growthbook/"
                         type="link"
                       />
 
                       <OverviewCard
                         imgUrl="/images/get-started/thumbnails/4.0-release.png"
-                        hoverText="View Blog Post"
+                        hoverText="查看博客文章"
                         href="https://blog.growthbook.io/growthbook-version-4-0/"
                         type="link"
                       />
@@ -384,7 +383,7 @@ const GetStartedAndHomePage = (): React.ReactElement => {
                   <Box mb="6">
                     <Box mb="3">
                       <Text size="1" weight="bold">
-                        SET UP YOUR WORKSPACE
+                        设置您的工作区
                       </Text>
                     </Box>
 
