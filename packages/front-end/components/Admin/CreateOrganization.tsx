@@ -32,13 +32,13 @@ const CreateOrganization: FC<{
       trackingEventModalType=""
       submit={handleSubmit}
       open={true}
-      header={"Create New Organization"}
-      cta={"Create"}
+      header={"创建新组织"}
+      cta={"创建"}
       close={close}
       inline={!close}
     >
       <div className="form-group">
-        Company Name
+        公司名称
         <input
           type="text"
           className="form-control"
@@ -49,8 +49,7 @@ const CreateOrganization: FC<{
         />
         {showExternalId && (
           <div className="mt-3">
-            External Id: Id used for the organization within your company
-            (optional)
+            外部 ID：在您公司内部用于组织的 ID（可选）
             <input
               type="text"
               className="form-control"

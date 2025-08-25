@@ -29,13 +29,13 @@ const EditOrganizationModal: FC<{
   return (
     <Modal
       trackingEventModalType=""
-      header="Edit Organization"
+      header="编辑组织"
       open={true}
       close={close}
       submit={form.handleSubmit(async (value) => {
         if (!canEdit) {
           throw new Error(
-            "You do not have permissions to edit this organization",
+            "您没有权限编辑此组织",
           );
         }
         if (
@@ -43,14 +43,14 @@ const EditOrganizationModal: FC<{
           value?.name.trim() === "" ||
           value?.name === undefined
         ) {
-          throw new Error("Organization name cannot be empty");
+          throw new Error("组织名称不能为空");
         }
         if (!value?.ownerEmail || value.ownerEmail.trim() === "") {
-          throw new Error("Owner email cannot be empty");
+          throw new Error("所有者电子邮件不能为空");
         } else {
           if (!existingEmails.includes(value.ownerEmail.trim())) {
             throw new Error(
-              "This email is not associated with any user in your organization",
+              "此电子邮件未与您组织中的任何用户关联",
             );
           }
         }
@@ -65,17 +65,17 @@ const EditOrganizationModal: FC<{
         // Update org name on settings page
         await mutate();
       })}
-      cta="Save"
+      cta="保存"
     >
       <Field
-        label="Organization Name"
+        label="组织名称"
         required
         {...form.register("name")}
         disabled={!canEdit}
       />
       {existingEmails.length < 100 ? (
         <SelectField
-          label="Owner Email"
+          label="所有者电子邮件"
           value={form.watch("ownerEmail")}
           options={
             existingEmails.map((e) => ({
@@ -84,18 +84,18 @@ const EditOrganizationModal: FC<{
             })) ?? []
           }
           disabled={!canEdit}
-          title={canEdit ? "" : "Only admins can change this"}
+          title={canEdit ? "" : "只有管理员可以更改此项"}
           onChange={(value) => {
             form.setValue("ownerEmail", value);
           }}
         />
       ) : (
         <Field
-          label="Owner Email"
+          label="所有者电子邮件"
           type="email"
           {...form.register("ownerEmail")}
           disabled={!canEdit}
-          title={canEdit ? "" : "Only admins can change this"}
+          title={canEdit ? "" : "只有管理员可以更改此项"}
         />
       )}
     </Modal>

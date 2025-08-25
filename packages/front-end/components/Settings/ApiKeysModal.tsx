@@ -41,28 +41,28 @@ const ApiKeysModal: FC<{
     <Modal
       trackingEventModalType=""
       close={close}
-      header={"Create API Key"}
+      header={"创建 API 密钥"}
       open={true}
       submit={onSubmit}
-      cta="Create"
+      cta="创建"
     >
       <Field
-        label="Description"
+        label="描述"
         required={true}
         {...form.register("description")}
       />
       {type !== "user" && (
         <SelectField
-          label="Role"
+          label="角色"
           value={form.watch("type")}
           onChange={(v) => form.setValue("type", v)}
           options={[
             {
-              label: "Admin",
+              label: "管理员",
               value: "admin",
             },
             {
-              label: "Read-only",
+              label: "只读",
               value: "readonly",
             },
           ]}

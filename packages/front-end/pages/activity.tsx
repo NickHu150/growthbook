@@ -29,17 +29,17 @@ const Activity: FC = () => {
 
   return (
     <div className="container-fluid">
-      <h3>Activity - Last 7 Days</h3>
-      <p>Includes all watched features and experiments.</p>
+      <h3>活动 - 最近 7 天</h3>
+      <p>包括所有关注的功能和实验。</p>
       {data.events.length > 0 ? (
         <table className="table appbox">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Name</th>
-              <th>User</th>
-              <th>Event</th>
+              <th>日期</th>
+              <th>类型</th>
+              <th>名称</th>
+              <th>用户</th>
+              <th>事件</th>
               <th></th>
             </tr>
           </thead>
@@ -70,7 +70,7 @@ const Activity: FC = () => {
         </table>
       ) : (
         <p>
-          <em>No recent events</em>
+          <em>最近没有活动</em>
         </p>
       )}
     </div>

@@ -28,55 +28,55 @@ import { useSidebarOpen } from "./SidebarOpenProvider";
 
 const navlinks: SidebarLinkProps[] = [
   {
-    name: "Home",
+    name: "主页",
     href: "/",
     Icon: BsHouse,
     path: /^$/,
     className: styles.first,
   },
   {
-    name: "Features",
+    name: "功能",
     href: "/features",
     Icon: BsFlag,
     path: /^(features)/,
   },
   {
-    name: "Experimentation",
+    name: "实验",
     href: "/experiments",
     path: /^(experiments|experiment\/|bandit|namespaces|power-calculator)/,
     Icon: GBExperiment,
     navigateOnExpand: true,
     subLinks: [
       {
-        name: "Experiments",
+        name: "实验",
         href: "/experiments",
         path: /^(experiments(\/(?!templates|explore)|$)|experiment\/)/,
       },
       {
-        name: "Bandits",
+        name: "老虎机",
         href: "/bandits",
         //Icon: GBBandit,
         path: /^bandit/,
         filter: ({ gb }) => !!gb?.isOn("bandits"),
       },
       {
-        name: "Holdouts",
+        name: "保留组",
         href: "/holdouts",
         path: /^holdouts/,
         filter: ({ gb }) => !!gb?.isOn("holdouts_feature"),
       },
       {
-        name: "Templates",
+        name: "模板",
         href: "/experiments/templates",
         path: /^experiments\/templates/,
       },
       {
-        name: "Power Calculator",
+        name: "功效计算器",
         href: "/power-calculator",
         path: /^power-calculator/,
       },
       {
-        name: "Namespaces",
+        name: "命名空间",
         href: "/namespaces",
         path: /^namespaces/,
       },
@@ -88,39 +88,39 @@ const navlinks: SidebarLinkProps[] = [
     ],
   },
   {
-    name: "Metrics and Data",
+    name: "指标和数据",
     href: "/metrics",
     path: /^(metric\/|metrics|segment|dimension|datasources|fact-|metric-group|sql-explorer)/,
     autoClose: true,
     Icon: GBDatabase,
     subLinks: [
       {
-        name: "Metrics",
+        name: "指标",
         href: "/metrics",
         path: /^(metric\/|metrics|fact-metric|metric-group)/,
       },
       {
-        name: "Fact Tables",
+        name: "事实表",
         href: "/fact-tables",
         path: /^fact-tables/,
       },
       {
-        name: "Segments",
+        name: "细分",
         href: "/segments",
         path: /^segment/,
       },
       {
-        name: "Dimensions",
+        name: "维度",
         href: "/dimensions",
         path: /^dimension/,
       },
       {
-        name: "Data Sources",
+        name: "数据源",
         href: "/datasources",
         path: /^datasources/,
       },
       {
-        name: "SQL Explorer",
+        name: "SQL 浏览器",
         href: "/sql-explorer",
         path: /^sql-explorer/,
         filter: ({ gb }) => !!gb?.isOn("sql-explorer"),
@@ -128,23 +128,23 @@ const navlinks: SidebarLinkProps[] = [
     ],
   },
   {
-    name: "Insights",
+    name: "洞察",
     href: "/dashboard",
     Icon: GBLibrary,
     path: /^(dashboard|learnings|timeline|metric-effect|correlations|presentation)/,
     subLinks: [
       {
-        name: "Dashboard",
+        name: "仪表板",
         href: "/dashboard",
         path: /^dashboard/,
       },
       {
-        name: "Learnings",
+        name: "学习",
         href: "/learnings",
         path: /^learnings/,
       },
       {
-        name: "Timeline",
+        name: "时间线",
         href: "/timeline",
         path: /^(timeline)/,
       },
@@ -154,17 +154,17 @@ const navlinks: SidebarLinkProps[] = [
       //   path: /^(interaction)/,
       // },
       {
-        name: "Metric Effects",
+        name: "指标效果",
         href: "/metric-effects",
         path: /^(metric-effect)/,
       },
       {
-        name: "Metric Correlations",
+        name: "指标关联",
         href: "/correlations",
         path: /^(correlations)/,
       },
       {
-        name: "Presentations",
+        name: "演示",
         href: "/presentations",
         path: /^presentation/,
       },
@@ -172,24 +172,24 @@ const navlinks: SidebarLinkProps[] = [
     filter: ({ gb }) => !!gb?.isOn("insights"),
   },
   {
-    name: "Management",
+    name: "管理",
     href: "/dashboard",
     Icon: BsClipboardCheck,
     path: /^(dashboard|idea|presentation)/,
     autoClose: true,
     subLinks: [
       {
-        name: "Dashboard",
+        name: "仪表板",
         href: "/dashboard",
         path: /^dashboard/,
       },
       {
-        name: "Ideas",
+        name: "想法",
         href: "/ideas",
         path: /^idea/,
       },
       {
-        name: "Presentations",
+        name: "演示",
         href: "/presentations",
         path: /^presentation/,
       },
@@ -197,61 +197,61 @@ const navlinks: SidebarLinkProps[] = [
     filter: ({ gb }) => !gb?.isOn("insights"),
   },
   {
-    name: "SDK Configuration",
+    name: "SDK 配置",
     href: "/sdks",
     path: /^(attributes|environments|saved-groups|sdks|archetypes)/,
     autoClose: true,
     Icon: BsCodeSlash,
     subLinks: [
       {
-        name: "SDK Connections",
+        name: "SDK 连接",
         href: "/sdks",
         path: /^sdks/,
       },
       {
-        name: "Attributes",
+        name: "属性",
         href: "/attributes",
         path: /^attributes/,
       },
       {
-        name: "Environments",
+        name: "环境",
         href: "/environments",
         path: /^environments/,
       },
       {
-        name: "Saved Groups",
+        name: "已保存组",
         href: "/saved-groups",
         path: /^saved-groups/,
       },
       {
-        name: "Archetypes",
+        name: "原型",
         href: "/archetypes",
         path: /^archetypes/,
       },
     ],
   },
   {
-    name: "Settings",
+    name: "设置",
     href: "/settings",
     Icon: GBSettings,
     path: /^(settings|admin|projects|integrations)/,
     autoClose: true,
     subLinks: [
       {
-        name: "General",
+        name: "常规",
         href: "/settings",
         path: /^settings$/,
         filter: ({ permissionsUtils }) =>
           permissionsUtils.canManageOrgSettings(),
       },
       {
-        name: "Members",
+        name: "成员",
         href: "/settings/team",
         path: /^settings\/team/,
         filter: ({ permissionsUtils }) => permissionsUtils.canManageTeam(),
       },
       {
-        name: "Tags",
+        name: "标签",
         href: "/settings/tags",
         path: /^settings\/tags/,
         filter: ({ permissionsUtils }) =>
@@ -259,19 +259,19 @@ const navlinks: SidebarLinkProps[] = [
           permissionsUtils.canDeleteTag(),
       },
       {
-        name: "Projects",
+        name: "项目",
         href: "/projects",
         path: /^project/,
         filter: ({ permissionsUtils }) =>
           permissionsUtils.canManageSomeProjects(),
       },
       {
-        name: "Custom Fields",
+        name: "自定义字段",
         href: "/settings/customfields",
         path: /^settings\/customfields/,
       },
       {
-        name: "API Keys",
+        name: "API 密钥",
         href: "/settings/keys",
         path: /^settings\/keys/,
         filter: ({ permissionsUtils }) =>
@@ -286,7 +286,7 @@ const navlinks: SidebarLinkProps[] = [
           permissionsUtils.canViewEventWebhook(),
       },
       {
-        name: "Logs",
+        name: "日志",
         href: "/events",
         path: /^events/,
         filter: ({ permissionsUtils }) => permissionsUtils.canViewAuditLogs(),
@@ -308,7 +308,7 @@ const navlinks: SidebarLinkProps[] = [
           !!gb?.isOn("github-integration"),
       },
       {
-        name: "Import your data",
+        name: "导入您的数据",
         href: "/importing",
         path: /^importing/,
         filter: ({ permissionsUtils, gb }) =>
@@ -321,7 +321,7 @@ const navlinks: SidebarLinkProps[] = [
           !!gb?.isOn("import-from-x"),
       },
       {
-        name: "Usage",
+        name: "使用情况",
         href: "/settings/usage",
         path: /^settings\/usage/,
         filter: ({ permissionsUtils, isCloud, gb }) =>
@@ -330,13 +330,13 @@ const navlinks: SidebarLinkProps[] = [
           !!gb?.isOn("cdn-usage-data"),
       },
       {
-        name: "Billing",
+        name: "计费",
         href: "/settings/billing",
         path: /^settings\/billing/,
         filter: ({ permissionsUtils }) => permissionsUtils.canManageBilling(),
       },
       {
-        name: "Admin",
+        name: "行政",
         href: "/admin",
         path: /^admin/,
         divider: true,
@@ -349,7 +349,7 @@ const navlinks: SidebarLinkProps[] = [
 const breadcumbLinks = [
   ...navlinks,
   {
-    name: "Power Calculator",
+    name: "功效计算器",
     path: /^power-calculator/,
     subLinks: [] as SidebarLinkProps[],
   },
@@ -358,27 +358,27 @@ const breadcumbLinks = [
 const otherPageTitles = [
   {
     path: /^$/,
-    title: "Home",
+    title: "主页",
   },
   {
     path: /^activity/,
-    title: "Activity Feed",
+    title: "活动源",
   },
   {
     path: /^reports/,
-    title: "My Reports",
+    title: "我的报告",
   },
   {
     path: /^account\/personal-access-tokens/,
-    title: "Personal Access Tokens",
+    title: "个人访问令牌",
   },
   {
     path: /^getstarted/,
-    title: "Get Started",
+    title: "入门",
   },
   {
     path: /^dashboard/,
-    title: "Dashboard",
+    title: "仪表板",
   },
 ];
 
@@ -492,7 +492,7 @@ const Layout = (): React.ReactElement => {
                 href="/"
                 aria-current="page"
                 className="app-sidebar-logo active"
-                title="GrowthBook Home"
+                title="GrowthBook 主页"
                 onClick={() => setOpen(false)}
               >
                 <div className={styles.sidebarlogo}>
@@ -567,17 +567,17 @@ const Layout = (): React.ReactElement => {
         <Flex p="3" direction="column" gap="4">
           {showUpgradeButton && (
             <WhiteButton onClick={() => setUpgradeModal(true)}>
-              <>Upgrade</>
+              <>升级</>
             </WhiteButton>
           )}
           <a href={inferDocUrl()} target="_blank" rel="noreferrer">
-            <WhiteButton variant="outline">View docs</WhiteButton>
+            <WhiteButton variant="outline">查看文档</WhiteButton>
           </a>
         </Flex>
         {build.sha && (
           <div className="px-3 my-1 text-center">
             <small>
-              <span className="text-muted">Build:</span>{" "}
+              <span className="text-muted">构建:</span>{" "}
               <a
                 href={`https://github.com/growthbook/growthbook/commit/${build.sha}`}
                 target="_blank"

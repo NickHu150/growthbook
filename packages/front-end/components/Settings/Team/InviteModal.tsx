@@ -83,15 +83,14 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
         open={true}
         close={close}
         size="md"
-        header={"Reached seat limit"}
+        header={"已达到席位限制"}
       >
         <div className="my-3">
-          Whoops! You reached the seat limit on your license. To increase your
-          number of seats, please contact{" "}
+          哎呀！您的许可证已达到席位限制。要增加席位数，请联系{" "}
           <a href="mailto:sales@growthbook.io" target="_blank" rel="noreferrer">
             sales@growthbook.io
           </a>
-          .
+          。
         </div>
       </Modal>
     );
@@ -161,12 +160,12 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
     <Modal
       trackingEventModalType=""
       close={close}
-      header="Invite Member"
+      header="邀请成员"
       open={true}
-      cta="Invite"
+      cta="邀请"
       size="lg"
       closeCta={
-        successfulInvites.length || failedInvites.length ? "Close" : "Cancel"
+        successfulInvites.length || failedInvites.length ? "关闭" : "取消"
       }
       autoCloseOnSubmit={false}
       submit={
@@ -177,13 +176,13 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
         <>
           {successfulInvites.length === 1 && (
             <div className="alert alert-success" role="alert">
-              Successfully invited <strong>{successfulInvites[0].email}</strong>
-              !
+              成功邀请 <strong>{successfulInvites[0].email}</strong>
+              ！
             </div>
           )}
           {successfulInvites.length > 1 && (
             <div className="alert alert-success" role="alert">
-              <strong>Successfully invited the following members:</strong>
+              <strong>成功邀请了以下成员：</strong>
               <div className="pt-2">
                 <ul>
                   {successfulInvites.map((successfulInvite) => {
@@ -200,10 +199,10 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
           {failedInvites.length === 1 && (
             <>
               <div className="alert alert-danger">
-                Failed to send invite email to{" "}
+                无法将邀请电子邮件发送至{" "}
                 <strong>{failedInvites[0].email}</strong>
               </div>
-              <p>You can manually send them the following invite link:</p>
+              <p>您可以手动向他们发送以下邀请链接：</p>
               <div className="mb-3">
                 <code>{failedInvites[0].inviteUrl}</code>
               </div>
@@ -213,7 +212,7 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
             <>
               <div className="alert alert-danger" role="alert">
                 <strong>
-                  Whoops! We weren&apos;t able to email the following members:
+                  哎呀！我们无法通过电子邮件发送给以下成员：
                 </strong>
                 <div className="pt-2">
                   <ul>
@@ -228,9 +227,7 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
                 </div>
               </div>
               <div className="pl-2 pr-2">
-                To manually send a member their invite link, close this modal
-                and click the 3 dots next to each member and select &apos;Resend
-                Invite&apos;.
+                要手动向成员发送邀请链接，请关闭此模式，然后单击每个成员旁边的 3 个点，然后选择“重新发送邀请”。
               </div>
             </>
           )}
@@ -239,7 +236,7 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
         <>
           <StringArrayField
             required
-            label="Email Address"
+            label="电子邮件地址"
             value={form.watch("email")}
             onChange={(emails) => {
               // check for multiple values
@@ -253,7 +250,7 @@ const InviteModal = ({ mutate, close, defaultRole }: Props) => {
               const dedupedEmails = [...new Set(parsedEmails)];
               form.setValue("email", dedupedEmails);
             }}
-            helpText="Enter a list of emails to invite multiple members at once."
+            helpText="输入电子邮件列表以一次邀请多个成员。"
             type="email"
           />
           <RoleSelector

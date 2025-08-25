@@ -157,14 +157,13 @@ function OrganizationRow({
       {clickhouseModalOpen && (
         <Modal
           open={true}
-          header="Create Clickhouse Data Source"
+          header="创建 Clickhouse 数据源"
           close={() => setClickhouseModalOpen(false)}
           submit={createClickhouseDatasource}
-          cta="Yes"
+          cta="是"
           trackingEventModalType=""
         >
-          Are you sure you want to create a Managed Warehouse data source for
-          this organization?
+          您确定要为此组织创建托管仓库数据源吗？
         </Modal>
       )}
       <tr
@@ -231,13 +230,13 @@ function OrganizationRow({
       {expanded && (
         <tr>
           <td colSpan={isCloud() ? 9 : 8} className="bg-light">
-            <h3>Summary</h3>
+            <h3>摘要</h3>
             <div
               className="mb-3 bg-white border p-3"
               style={{ border: "1px solid var(--border-color-200)" }}
             >
               <div className="row">
-                <div className="col-2 text-right">Name:</div>
+                <div className="col-2 text-right">名称:</div>
                 <div className="col-auto font-weight-bold">
                   {organization.name}
                 </div>
@@ -249,41 +248,41 @@ function OrganizationRow({
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">Verified Domain:</div>
+                <div className="col-2 text-right">已验证域:</div>
                 <div className="col-auto font-weight-bold">
                   {organization.verifiedDomain}
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">Auto Approve Members:</div>
+                <div className="col-2 text-right">自动批准成员:</div>
                 <div className="col-auto font-weight-bold">
-                  {organization.autoApproveMembers ? "on" : "off"}
+                  {organization.autoApproveMembers ? "开启" : "关闭"}
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">SSO Enabled:</div>
+                <div className="col-2 text-right">SSO 已启用:</div>
                 <div className="col-auto font-weight-bold">
                   {ssoInfo
-                    ? `yes (${
+                    ? `是 (${
                         ssoInfo.id
-                      } for domains: ${ssoInfo.emailDomains.join(", ")})`
-                    : "no"}
+                      } 对于域: ${ssoInfo.emailDomains.join(", ")})`
+                    : "否"}
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">Restrict Login Method:</div>
+                <div className="col-2 text-right">限制登录方法:</div>
                 <div className="col-auto font-weight-bold">
-                  {organization?.restrictLoginMethod ? "yes" : "no"}
+                  {organization?.restrictLoginMethod ? "是" : "否"}
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">Num Members:</div>
+                <div className="col-2 text-right">成员数:</div>
                 <div className="col-auto font-weight-bold">
                   {organization.members.length}
                 </div>
               </div>
               <div className="row">
-                <div className="col-2 text-right">Num Invited:</div>
+                <div className="col-2 text-right">邀请数:</div>
                 <div className="col-auto font-weight-bold">
                   {organization.invites.length}
                 </div>
@@ -291,20 +290,20 @@ function OrganizationRow({
               {isCloud() && (
                 <>
                   <div className="row">
-                    <div className="col-2 text-right">Enterprise (legacy):</div>
+                    <div className="col-2 text-right">企业（旧版）:</div>
                     <div className="col-auto font-weight-bold">
-                      {organization?.enterprise ? "yes" : "no"}
+                      {organization?.enterprise ? "是" : "否"}
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-2 text-right">License Key:</div>
+                    <div className="col-2 text-right">许可证密钥:</div>
                     <div className="col-auto font-weight-bold">
                       {organization?.licenseKey ? organization.licenseKey : "-"}
                     </div>
                   </div>
                   {((license || licenseLoading) && (
                     <div className="row">
-                      <div className="col-2 text-right">Seats</div>
+                      <div className="col-2 text-right">席位</div>
                       <div className="col-auto font-weight-bold">
                         {licenseLoading && <LoadingSpinner />}
                         {license && license.seats}
@@ -313,14 +312,14 @@ function OrganizationRow({
                   )) || // Only show free seats if they are on a free plan, ie. there is no license, no subscription, nor are they on a legacy enterprise
                     (!organization?.enterprise && (
                       <div className="row">
-                        <div className="col-2 text-right">Free Seats:</div>
+                        <div className="col-2 text-right">免费席位:</div>
                         <div className="col-auto font-weight-bold">
                           {organization?.freeSeats ?? 3}
                         </div>
                       </div>
                     ))}
                   <div className="row">
-                    <div className="col-2 text-right">Managed Warehouse</div>
+                    <div className="col-2 text-right">托管仓库</div>
                     <div className="col-auto">
                       {managedWarehouseId ? (
                         <ConfirmButton
@@ -335,14 +334,13 @@ function OrganizationRow({
                           }}
                           confirmationText={
                             <span>
-                              Are you sure? This may take several minutes and
-                              all queries during this time will fail.
+                              你确定吗？这可能需要几分钟时间，并且在此期间所有查询都将失败。
                             </span>
                           }
-                          modalHeader="Drop and Recreate Managed Warehouse"
+                          modalHeader="删除并重新创建托管仓库"
                         >
                           <button className="btn btn-danger">
-                            Drop and Recreate Database
+                            删除并重新创建数据库
                           </button>
                         </ConfirmButton>
                       ) : (
@@ -354,7 +352,7 @@ function OrganizationRow({
                             setClickhouseModalOpen(true);
                           }}
                         >
-                          Create Database
+                          创建数据库
                         </a>
                       )}
                     </div>
@@ -366,7 +364,7 @@ function OrganizationRow({
               <Collapsible
                 trigger={
                   <h3>
-                    Other Attributes <FaAngleRight className="chevron" />
+                    其他属性 <FaAngleRight className="chevron" />
                   </h3>
                 }
                 transitionTime={150}
@@ -378,7 +376,7 @@ function OrganizationRow({
               <Collapsible
                 trigger={
                   <h3>
-                    Settings <FaAngleRight className="chevron" />
+                    设置 <FaAngleRight className="chevron" />
                   </h3>
                 }
                 transitionTime={150}
@@ -389,7 +387,7 @@ function OrganizationRow({
             <Collapsible
               trigger={
                 <h3>
-                  Members <FaAngleRight className="chevron" />
+                  成员 <FaAngleRight className="chevron" />
                 </h3>
               }
               transitionTime={150}
@@ -413,7 +411,7 @@ function OrganizationRow({
                 <Collapsible
                   trigger={
                     <h3>
-                      License <FaAngleRight className="chevron" />
+                      许可证 <FaAngleRight className="chevron" />
                     </h3>
                   }
                   transitionTime={150}
@@ -422,7 +420,7 @@ function OrganizationRow({
                   {(license && (
                     <Code language="json" code={stringify(license)} />
                   )) ||
-                    "No license found for this organization."}
+                    "未找到此组织的许可证。"}
                 </Collapsible>
               </div>
             )}
@@ -465,7 +463,7 @@ function MemberRow({
         <td>{member.email}</td>
         <td>{member.id}</td>
         <td>{member.dateCreated ? date(member.dateCreated) : "-"}</td>
-        <td>{member.verified ? "Yes" : "No"}</td>
+        <td>{member.verified ? "是" : "否"}</td>
         <td>
           {memberOrgs.length ? memberOrgs.map((mo) => mo.name).join(", ") : "-"}
         </td>
@@ -500,10 +498,10 @@ function MemberRow({
         <tr>
           <td colSpan={isCloud() ? 9 : 8} className="bg-light">
             <div className="mb-3">
-              <h4>Organization Info</h4>
+              <h4>组织信息</h4>
               <div className="row">
                 {memberOrgs.length === 0 && (
-                  <div className="col">No organizations found</div>
+                  <div className="col">未找到任何组织</div>
                 )}
                 {memberOrgs.map((o) => (
                   <div
@@ -511,17 +509,17 @@ function MemberRow({
                     key={o.id + member.id}
                   >
                     <div>
-                      <span className="font-weight-bold">Name:</span> {o.name}
+                      <span className="font-weight-bold">名称:</span> {o.name}
                     </div>
                     <div>
-                      <span className="font-weight-bold">Org Id:</span> {o.id}
+                      <span className="font-weight-bold">组织 ID:</span> {o.id}
                     </div>
                     <div>
-                      <span className="font-weight-bold">Members:</span>{" "}
+                      <span className="font-weight-bold">成员:</span>{" "}
                       {o.members}
                     </div>
                     <div>
-                      <span className="font-weight-bold">Role:</span> {o.role}
+                      <span className="font-weight-bold">角色:</span> {o.role}
                     </div>
                   </div>
                 ))}
@@ -627,14 +625,14 @@ const Admin: FC = () => {
   if (!superAdmin) {
     return (
       <div className="alert alert-danger">
-        Only super admins can view this page
+        只有超级管理员才能查看此页面
       </div>
     );
   }
   if (!isCloud() && license?.plan != "enterprise") {
     return (
       <div className="alert alert-danger">
-        You must be on an enterprise license to view this page
+        您必须拥有企业许可证才能查看此页面
       </div>
     );
   }
@@ -650,7 +648,7 @@ const Admin: FC = () => {
           close={() => setOrgModalOpen(false)}
         />
       )}
-      <h1>GrowthBook Admin</h1>
+      <h1>GrowthBook 管理员</h1>
       {!isCloud() && (
         <>
           <div
@@ -665,8 +663,8 @@ const Admin: FC = () => {
       <Tabs defaultValue="organizations" persistInURL={true}>
         <Box mb="3">
           <TabsList>
-            <TabsTrigger value="organizations">Organizations</TabsTrigger>
-            <TabsTrigger value="members">Members</TabsTrigger>
+            <TabsTrigger value="organizations">组织</TabsTrigger>
+            <TabsTrigger value="members">成员</TabsTrigger>
           </TabsList>
         </Box>
 
@@ -678,7 +676,7 @@ const Admin: FC = () => {
               setOrgModalOpen(true);
             }}
           >
-            <FaPlus /> New Organization
+            <FaPlus /> 新组织
           </button>
           <div className="mb-2 row align-items-center">
             <div className="col-auto">
@@ -691,7 +689,7 @@ const Admin: FC = () => {
                 }}
               >
                 <Field
-                  label="Search:"
+                  label="搜索:"
                   labelClassName="mr-2"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -706,7 +704,7 @@ const Admin: FC = () => {
             </div>
             <div className="col-auto">
               <span className="text-muted">
-                {numberFormatter.format(total)} matching organization
+                {numberFormatter.format(total)} 匹配的组织
                 {total === 1 ? "" : "s"}
               </span>
             </div>
@@ -717,13 +715,13 @@ const Admin: FC = () => {
             <table className="table appbox" style={{ tableLayout: "fixed" }}>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th style={{ width: "260px" }}>Owner</th>
-                  <th>Created</th>
+                  <th>名称</th>
+                  <th style={{ width: "260px" }}>所有者</th>
+                  <th>已创建</th>
                   <th>Id</th>
-                  {isCloud() && <th>Verified Domain</th>}
-                  {!isCloud() && <th>External Id</th>}
-                  <th style={{ width: "120px" }}>Members</th>
+                  {isCloud() && <th>已验证域</th>}
+                  {!isCloud() && <th>外部 Id</th>}
+                  <th style={{ width: "120px" }}>成员</th>
                   <th style={{ width: "14px" }}></th>
                   <th style={{ width: "40px" }}></th>
                 </tr>
@@ -800,7 +798,7 @@ const Admin: FC = () => {
                 }}
               >
                 <Field
-                  label="Search:"
+                  label="搜索:"
                   labelClassName="mr-2"
                   value={memberSearch}
                   onChange={(e) => setMemberSearch(e.target.value)}
@@ -816,7 +814,7 @@ const Admin: FC = () => {
             <div className="col-auto">
               <span className="text-muted">
                 {numberFormatter.format(totalMembers)}{" "}
-                {memberSearch ? "matching" : ""} member
+                {memberSearch ? "匹配的" : ""} 成员
                 {totalMembers === 1 ? "" : "s"}
               </span>
             </div>
@@ -829,12 +827,12 @@ const Admin: FC = () => {
             <table className="table appbox" style={{ tableLayout: "fixed" }}>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>email</th>
+                  <th>名称</th>
+                  <th>电子邮件</th>
                   <th>Id</th>
-                  <th>Created</th>
-                  <th title="Verified Email">Verified</th>
-                  <th>Orgs</th>
+                  <th>已创建</th>
+                  <th title="已验证电子邮件">已验证</th>
+                  <th>组织</th>
                   <th style={{ width: 40 }}></th>
                   <th style={{ width: 40 }}></th>
                 </tr>
@@ -901,13 +899,13 @@ const EditMember: FC<{
       trackingEventModalType=""
       submit={handleSubmit}
       open={true}
-      header={"Edit Member"}
-      cta={"Update"}
+      header={"编辑成员"}
+      cta={"更新"}
       close={close}
       inline={!close}
     >
       <div className="form-group">
-        Name
+        名称
         <input
           type="text"
           className="form-control"
@@ -917,7 +915,7 @@ const EditMember: FC<{
           onChange={(e) => setName(e.target.value)}
         />
         <div className="mt-3">
-          Email
+          电子邮件
           <input
             type="email"
             className="form-control"
@@ -927,9 +925,9 @@ const EditMember: FC<{
           />
         </div>
         <div className="mt-4">
-          <label>Verified Email </label>
+          <label>已验证电子邮件 </label>
           <Toggle
-            label="Verified"
+            label="已验证"
             id="verified"
             className=" ml-2"
             value={verified}

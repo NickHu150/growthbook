@@ -71,7 +71,7 @@ export const MembersTabView: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您无权查看此页面。
         </div>
       </div>
     );
@@ -87,7 +87,7 @@ export const MembersTabView: FC = () => {
         track("Renter email on Stripe");
         await redirectWithTimeout(res.url);
       } else {
-        setError("Unknown response");
+        setError("未知响应");
       }
     } catch (e) {
       setError(e.message);
@@ -110,15 +110,15 @@ export const MembersTabView: FC = () => {
         <LicenseSuccessModal
           plan={"Pro"}
           close={() => setJustSubscribedForPro(false)}
-          header={`🎉 Welcome to Growthbook Pro`}
+          header={`🎉 欢迎使用 Growthbook Pro`}
           isTrial={license?.isTrial}
         />
       )}
       <SSOSettings ssoConnection={ssoConnection || null} />
-      <h1>Team Members</h1>
+      <h1>团队成员</h1>
       {projects.length > 0 && (
         <div className="row align-items-center">
-          <div className="col-auto">View roles and permissions for</div>
+          <div className="col-auto">查看角色和权限</div>
           <div className="col-auto">
             <SelectField
               value={currentProject}
@@ -127,7 +127,7 @@ export const MembersTabView: FC = () => {
                 label: p.name,
                 value: p.id,
               }))}
-              initialOption="All Projects"
+              initialOption="所有项目"
             />
           </div>
         </div>
@@ -150,8 +150,7 @@ export const MembersTabView: FC = () => {
           dismissable={true}
           mb="5"
         >
-          <strong>Teams and Custom Roles</strong> can make permission management
-          easier at scale.
+          <strong>团队和自定义角色</strong> 可以大规模地简化权限管理。
         </PremiumCallout>
       ) : null}
       {organization &&

@@ -57,7 +57,7 @@ export default function PaymentInfo() {
 
   async function setPaymentMethodAsDefault() {
     if (!defaultPaymentMethod) {
-      throw new Error("Must specify payment method id");
+      throw new Error("必须指定付款方式 ID");
     }
     try {
       await apiCall("/subscription/payment-methods/set-default", {
@@ -89,13 +89,13 @@ export default function PaymentInfo() {
 
       if (paymentMethods?.length === 1 && subscription?.status !== "canceled") {
         throw new Error(
-          "Unable to delete payment method. You must have at least 1 payment method on file.",
+          "无法删除付款方式。您的文件中必须至少有 1 种付款方式。",
         );
       }
 
       if (methodIndex <= -1) {
         throw new Error(
-          "Cannot delete: Payment method does not exist on this subscription",
+          "无法删除：此订阅上不存在付款方式",
         );
       }
       await apiCall("/subscription/payment-methods/detach", {
@@ -133,23 +133,22 @@ export default function PaymentInfo() {
       ) : null}
       {defaultPaymentMethod ? (
         <Modal
-          header="Update default payment method"
+          header="更新默认付款方式"
           open={true}
-          cta="Set as default payment method"
+          cta="设为默认付款方式"
           submit={async () => await setPaymentMethodAsDefault()}
           trackingEventModalType=""
           close={() => setDefaultPaymentMethod(undefined)}
         >
-          Are your sure? The default payment method will be the one charged on
-          future invoices.
+          你确定吗？默认付款方式将是未来发票上收取的付款方式。
         </Modal>
       ) : null}
       <div className="p-3 border mb-3">
         <Flex justify="between" align="center" className="pb-3">
-          <h3 className="mb-0">Payment Methods</h3>
+          <h3 className="mb-0">付款方式</h3>
           <div>
             <Tooltip
-              body="You can only have up to 3 payment methods on file"
+              body="您的文件中最多只能有 3 种付款方式"
               shouldDisplay={paymentMethods?.length > 2}
             >
               <Button
@@ -164,7 +163,7 @@ export default function PaymentInfo() {
                 <span className="h4 pr-2 m-0 d-inline-block align-top">
                   <GBAddCircle />
                 </span>
-                Add Payment Method
+                添加付款方式
               </Button>
             </Tooltip>
           </div>
@@ -187,7 +186,7 @@ export default function PaymentInfo() {
                     className="py-4"
                   >
                     <CiCreditCard1 size={50} />
-                    <Text as="label">No payment methods added</Text>
+                    <Text as="label">未添加任何付款方式</Text>
                   </Flex>
                 ) : (
                   <table className="table mb-3 appbox gbtable table-hover">
@@ -212,7 +211,7 @@ export default function PaymentInfo() {
                               </span>
                               <span className="pl-2">
                                 {method.isDefault ? (
-                                  <Badge label="Default" />
+                                  <Badge label="默认" />
                                 ) : null}
                                 {method.wallet ? (
                                   <Badge label={method.wallet} color="green" />
@@ -222,7 +221,7 @@ export default function PaymentInfo() {
                             <td>
                               <Flex align="center" justify="end">
                                 {method.type === "card"
-                                  ? `Expires ${method.expMonth}/${method.expYear}`
+                                  ? `到期 ${method.expMonth}/${method.expYear}`
                                   : null}
                                 <MoreMenu className="pl-2">
                                   <button
@@ -233,11 +232,11 @@ export default function PaymentInfo() {
                                       setDefaultPaymentMethod(method.id);
                                     }}
                                   >
-                                    Set as default
+                                    设为默认
                                   </button>
                                   <Tooltip
                                     tipPosition="left"
-                                    body="Before you can delete this card, set another card as the default card"
+                                    body="在删除此卡之前，请将另一张卡设置为默认卡"
                                     shouldDisplay={method.isDefault}
                                   >
                                     <DeleteButton
@@ -246,8 +245,8 @@ export default function PaymentInfo() {
                                       }
                                       disabled={method.isDefault}
                                       className="dropdown-item text-danger"
-                                      displayName="Remove Payment Method"
-                                      text="Remove Payment Method"
+                                      displayName="删除付款方式"
+                                      text="删除付款方式"
                                       useIcon={false}
                                     />
                                   </Tooltip>

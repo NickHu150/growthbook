@@ -119,18 +119,18 @@ const CreateOrJoinOrganization: FC<{
 
   const leftside = (
     <>
-      <h1 className="title h1">Welcome to GrowthBook!</h1>
+      <h1 className="title h1">欢迎使用 GrowthBook！</h1>
       {showCreate || showJoin ? (
         <p>
-          You aren&apos;t part of an organization yet. <br />
+          您还不属于任何组织。 <br />
           {showCreate && showJoin
-            ? `Create or join one here.`
+            ? `在此创建或加入一个。`
             : showCreate
-              ? `Create a new one here.`
-              : `Join one here.`}
+              ? `在此创建一个新的。`
+              : `在此加入一个。`}
         </p>
       ) : (
-        <p>Ask your admin to invite you to the organization.</p>
+        <p>请您的管理员邀请您加入组织。</p>
       )}
     </>
   );
@@ -138,19 +138,19 @@ const CreateOrJoinOrganization: FC<{
   const titleCopy = (orgs) => {
     if (title) return title;
 
-    return `We found ${
-      orgs.length === 1 ? "your organization" : "possible organizations for you"
-    } on GrowthBook!`;
+    return `我们在 GrowthBook 上找到了${
+      orgs.length === 1 ? "您的组织" : "可能适合您的组织"
+    }！`;
   };
 
   const subtitleCopy = (orgs) => {
     if (orgs.length === 0) {
-      return "There are no other organizations that you are not already a member of.";
+      return "没有其他您尚未成为其成员的组织。";
     }
 
     if (subtitle) return subtitle;
 
-    return "Join your organization to get started.";
+    return "加入您的组织以开始。";
   };
 
   const rightSide = (
@@ -180,9 +180,7 @@ const CreateOrJoinOrganization: FC<{
                           {org.name}
                         </div>
                         <div className={style.recommendedOrgMembers}>
-                          {org.members === 1
-                            ? `${org.members} member`
-                            : `${org.members} members`}
+                          {org.members} 名成员
                         </div>
                       </div>
                       <button
@@ -193,17 +191,16 @@ const CreateOrJoinOrganization: FC<{
                         }}
                         disabled={org.currentUserIsPending || false}
                       >
-                        {org.currentUserIsPending ? "Pending" : "Join"}
+                        {org.currentUserIsPending ? "待定" : "加入"}
                       </button>
                     </div>
                     {org.currentUserIsPending && (
                       <div className="alert alert-success mt-2 mb-0">
                         <div className="mb-2">
-                          <FaCheck /> Your membership is pending.
+                          <FaCheck /> 您的会员资格正在等待处理。
                         </div>
                         <div>
-                          Please contact your organization&apos;s admin to
-                          approve your membership.
+                          请联系您组织的管理员以批准您的会员资格。
                         </div>
                       </div>
                     )}
@@ -214,7 +211,7 @@ const CreateOrJoinOrganization: FC<{
                     className={`${style.switchModeButton} btn btn-light mt-3`}
                     onClick={switchMode}
                   >
-                    <FaPlus /> <span>Create a new organization instead</span>
+                    <FaPlus /> <span>改为创建新组织</span>
                   </div>
                 )}
               </>
@@ -265,34 +262,34 @@ const CreateOrJoinOrganization: FC<{
                   })}
                 >
                   <div>
-                    <h2>Create {orgs ? "a new" : "an"} organization</h2>
+                    <h2>创建 {orgs ? "一个新" : "一个"} 组织</h2>
                     <p className={`mb-4 ${style.textMid}`}>
-                      Help us tailor your onboarding experience.
+                      帮助我们为您量身定制入职体验。
                     </p>
                   </div>
                   <Field
                     label={
                       <>
                         <div className="font-weight-bold">
-                          Organization Name
+                          组织名称
                           <span className="text-danger ml-1">*</span>
                         </div>
 
                         <div className={`${style.textMid}`}>
-                          Organization name can be edited anytime.
+                          组织名称可以随时编辑。
                         </div>
                       </>
                     }
                     required
                     autoFocus
-                    placeholder="My Company"
+                    placeholder="我的公司"
                     autoComplete="company"
                     minLength={3}
                     maxLength={60}
                     {...newOrgForm.register("company")}
                   />
                   <SelectField
-                    label="Your role"
+                    label="你的角色"
                     labelClassName="font-weight-bold"
                     markRequired
                     required
@@ -309,13 +306,13 @@ const CreateOrJoinOrganization: FC<{
                     value={newOrgForm.watch("ownerJobTitle")}
                   />
                   <div className="mt-4 font-weight-bold">
-                    How will your team use Growthbook?
+                    您的团队将如何使用 Growthbook？
                   </div>
                   <div>
                     <Checkbox
                       mt="2"
                       size="md"
-                      label="Manage feature flags"
+                      label="管理功能标志"
                       value={!!newOrgForm.watch("ownerFeatureFlagUsageIntent")}
                       setValue={(v) => {
                         newOrgForm.setValue(
@@ -330,7 +327,7 @@ const CreateOrJoinOrganization: FC<{
                       mt="2"
                       mb="6"
                       size="md"
-                      label="Run experiments"
+                      label="进行实验"
                       value={!!newOrgForm.watch("ownerExperimentUsageIntent")}
                       setValue={(v) => {
                         newOrgForm.setValue(
@@ -344,7 +341,7 @@ const CreateOrJoinOrganization: FC<{
                     className={`btn btn-primary btn-block btn-lg`}
                     type="submit"
                   >
-                    Create organization
+                    创建组织
                   </button>
                   {error && (
                     <div className="alert alert-danger mt-2">{error}</div>
@@ -356,7 +353,7 @@ const CreateOrJoinOrganization: FC<{
                     className={`${style.switchModeButton} btn btn-light mt-5`}
                     onClick={switchMode}
                   >
-                    <FaPlus /> <span>Join an organization instead</span>
+                    <FaPlus /> <span>改为加入一个组织</span>
                   </div>
                 )}
               </>
@@ -364,10 +361,9 @@ const CreateOrJoinOrganization: FC<{
           </>
         ) : (
           <div>
-            <h3 className="h2">Invitation Required</h3>
+            <h3 className="h2">需要邀请</h3>
             <div className="alert alert-danger">
-              You must be invited by an administrator in order to use
-              GrowthBook.
+              您必须由管理员邀请才能使用 GrowthBook。
             </div>
           </div>
         )}{" "}
@@ -392,7 +388,7 @@ const CreateOrJoinOrganization: FC<{
               logout();
             }}
           >
-            <FiLogOut /> log out
+            <FiLogOut /> 登出
           </a>
           {rightSide}
         </WelcomeFrame>

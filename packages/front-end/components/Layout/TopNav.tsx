@@ -106,7 +106,7 @@ const TopNav: FC<{
         return (
           <div className="align-middle">
             <PiMoon size="16" className="mr-1 " />
-            Theme
+            主题
           </div>
         );
 
@@ -114,7 +114,7 @@ const TopNav: FC<{
         return (
           <div className="align-middle">
             <PiSunDim size="16" className="mr-1" />
-            Theme
+            主题
           </div>
         );
 
@@ -122,7 +122,7 @@ const TopNav: FC<{
         return (
           <div className="align-middle">
             <PiCircleHalf size="16" className="mr-1" />
-            Theme
+            主题
           </div>
         );
     }
@@ -144,7 +144,7 @@ const TopNav: FC<{
           logout();
         }}
       >
-        Sign Out
+        登出
       </DropdownMenuItem>
     );
   };
@@ -157,7 +157,7 @@ const TopNav: FC<{
           setEditUserOpen(true);
         }}
       >
-        Edit Profile
+        编辑个人资料
       </DropdownMenuItem>
     );
   };
@@ -190,7 +190,7 @@ const TopNav: FC<{
       >
         <div className="align-middle">
           <PiKey size="16" className="mr-1" />
-          Personal Access Tokens
+          个人访问令牌
         </div>
       </DropdownMenuItem>
     );
@@ -206,7 +206,7 @@ const TopNav: FC<{
       >
         <div className="align-middle">
           <PiFiles size="16" className="mr-1" />
-          My Reports
+          我的报告
         </div>
       </DropdownMenuItem>
     );
@@ -222,7 +222,7 @@ const TopNav: FC<{
       >
         <div className="align-middle">
           <PiListChecks size="16" className="mr-1" />
-          Activity Feed
+          活动源
         </div>
       </DropdownMenuItem>
     );
@@ -244,7 +244,7 @@ const TopNav: FC<{
         >
           <span>
             <PiCircleHalf size="16" className="mr-1" />
-            System Default
+            系统默认
           </span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -257,7 +257,7 @@ const TopNav: FC<{
         >
           <span>
             <PiSunDim size="16" className="mr-1" />
-            Light
+            浅色
           </span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -270,7 +270,7 @@ const TopNav: FC<{
         >
           <span>
             <PiMoon size="16" className="mr-1" />
-            Dark
+            深色
           </span>
         </DropdownMenuItem>
       </DropdownSubMenu>
@@ -307,7 +307,7 @@ const TopNav: FC<{
               show: orgDropdownOpen,
             })}
           >
-            <div className="dropdown-header">Organization</div>
+            <div className="dropdown-header">组织</div>
             {organizations.map((o) => (
               <a
                 className={clsx("dropdown-item", {
@@ -348,7 +348,7 @@ const TopNav: FC<{
                       }}
                     >
                       <PiPlusBold />
-                      Add Organization
+                      添加组织
                     </Link>
                   </div>
                 </div>
@@ -393,7 +393,7 @@ const TopNav: FC<{
             setChangePasswordOpen(true);
           }}
         >
-          Change Password
+          更改密码
         </DropdownMenuItem>
       );
     }
@@ -409,21 +409,21 @@ const TopNav: FC<{
           trackingEventModalType=""
           close={() => setEditUserOpen(false)}
           submit={onSubmitEditProfile}
-          header="Edit Profile"
+          header="编辑个人资料"
           open={true}
         >
-          <Field label="Name" {...form.register("name")} />
+          <Field label="名称" {...form.register("name")} />
           <label className="mr-3">
-            Allow Celebrations{" "}
+            允许庆祝{" "}
             <Tooltip
               body={
-                "GrowthBook adds on-screen confetti celebrations randomly when you complete certain actions like launching an experiment. You can disable this if you find it distracting."
+                "当您完成某些操作（例如启动实验）时，GrowthBook 会在屏幕上随机添加五彩纸屑庆祝活动。如果您觉得这会分散您的注意力，可以禁用此功能。"
               }
             />
           </label>
           <Toggle
             id="allowCelebration"
-            label="Allow celebration"
+            label="允许庆祝"
             value={form.watch("enableCelebrations")}
             setValue={(v) => form.setValue("enableCelebrations", v)}
           />
@@ -444,13 +444,13 @@ const TopNav: FC<{
               href="#main-menu"
               id="main-menu-toggle"
               className={styles.mobilemenu}
-              aria-label="Open main menu"
+              aria-label="打开主菜单"
               onClick={(e) => {
                 e.preventDefault();
                 toggleLeftMenu();
               }}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">打开主菜单</span>
               <FaBars />
             </a>
           ) : showLogo ? (

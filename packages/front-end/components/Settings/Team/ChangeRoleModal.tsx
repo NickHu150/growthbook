@@ -28,14 +28,14 @@ const ChangeRoleModal: FC<{
     <Modal
       trackingEventModalType=""
       close={close}
-      header="Change Role"
+      header="更改角色"
       open={true}
       submit={async () => {
         await onConfirm(value);
       }}
     >
       <p>
-        Change role for <strong>{displayInfo}</strong>:
+        更改角色 <strong>{displayInfo}</strong>:
       </p>
       <RoleSelector
         value={value}

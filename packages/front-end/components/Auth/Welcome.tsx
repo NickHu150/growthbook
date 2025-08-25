@@ -36,21 +36,21 @@ export default function Welcome({
   }, [pathname]);
 
   const welcomeMsg = [
-    <>Welcome to GrowthBook!</>,
-    <>Hello! Welcome to GrowthBook</>,
-    "Hello there, Welcome!",
-    "Hey there!",
+    <>欢迎使用 GrowthBook！</>,
+    <>您好！欢迎使用 GrowthBook</>,
+    "您好，欢迎！",
+    "嘿！",
   ];
   const cta =
     state === "login"
-      ? "Log in"
+      ? "登录"
       : state === "register"
-        ? "Create Account"
+        ? "创建账户"
         : state === "forgot"
-          ? "Look up"
+          ? "查找"
           : state === "firsttime"
-            ? "Sign up"
-            : "Submit";
+            ? "注册"
+            : "提交";
 
   const submit =
     state === "forgotSuccess"
@@ -72,7 +72,7 @@ export default function Welcome({
           } = await res.json();
           if (json.status > 200) {
             throw new Error(
-              json.message || "An error occurred. Please try again.",
+              json.message || "发生错误。请再试一次。",
             );
           }
 
@@ -91,22 +91,22 @@ export default function Welcome({
 
   const welcomeContent =
     state === "login" ? (
-      <p>Welcome back, lets get started with some experiments</p>
+      <p>欢迎回来，让我们开始做一些实验吧</p>
     ) : state === "register" ? (
       <p>
-        Let&apos;s run some experiments! Enter your information to get started.
+        让我们来做一些实验吧！请输入您的信息以开始。
       </p>
     ) : state === "forgot" ? (
-      <p>Happens to the best of us</p>
+      <p>我们当中最优秀的人也会遇到这种情况</p>
     ) : state === "firsttime" ? (
       <>
         <p>
-          Getting started with GrowthBook only takes a few minutes. <br />
-          To start, we&apos;ll need a bit of information about you.
+          GrowthBook 入门只需几分钟。 <br />
+          首先，我们需要您的一些信息。
         </p>
       </>
     ) : (
-      <p>Let&apos;s get started with some experimentation</p>
+      <p>让我们开始做一些实验吧</p>
     );
 
   const leftside = (
@@ -141,9 +141,9 @@ export default function Welcome({
         >
           {state === "register" && (
             <div>
-              <h3 className="h2">Register</h3>
+              <h3 className="h2">注册</h3>
               <p>
-                Already have an account?{" "}
+                已有账户？{" "}
                 <a
                   href="#"
                   onClick={(e) => {
@@ -151,26 +151,26 @@ export default function Welcome({
                     setState("login");
                   }}
                 >
-                  Log In
+                  登录
                 </a>
               </p>
             </div>
           )}
           {state === "firsttime" && (
             <div>
-              <h3 className="h2">Set up your first account</h3>
+              <h3 className="h2">设置您的第一个帐户</h3>
               <p>
-                This information stays on your servers and is never shared.{" "}
+                此信息会保留在您的服务器上，绝不会被共享。{" "}
                 <br />
-                You can invite the rest of your team later.
+                您可以稍后邀请您的其他团队成员。
               </p>
             </div>
           )}
           {state === "login" && (
             <div>
-              <h3 className="h2">Log In</h3>
+              <h3 className="h2">登录</h3>
               <p>
-                Don&apos;t have an account yet?{" "}
+                还没有账户？{" "}
                 <a
                   href="#"
                   onClick={(e) => {
@@ -178,14 +178,14 @@ export default function Welcome({
                     setState("register");
                   }}
                 >
-                  Register
+                  注册
                 </a>
               </p>
             </div>
           )}
           {state === "forgot" && (
             <div>
-              <h3 className="h2">Forgot Password</h3>
+              <h3 className="h2">忘记密码</h3>
               <p>
                 <a
                   href="#"
@@ -194,20 +194,20 @@ export default function Welcome({
                     setState("login");
                   }}
                 >
-                  Go back to Log In
+                  返回登录
                 </a>
               </p>
             </div>
           )}
           {state === "forgotSuccess" && (
             <div>
-              <h3 className="h2">Forgot Password</h3>
+              <h3 className="h2">忘记密码</h3>
               <div className="alert alert-success">
-                Password reset link sent to <strong>{email}</strong>.
+                密码重置链接已发送至 <strong>{email}</strong>.
               </div>
-              <p>Click the link in the email to reset your password.</p>
+              <p>单击电子邮件中的链接以重置您的密码。</p>
               <p>
-                Sent to the wrong email or need to resend?{" "}
+                发送到错误的电子邮件或需要重新发送？{" "}
                 <a
                   href="#"
                   onClick={(e) => {
@@ -215,14 +215,14 @@ export default function Welcome({
                     setState("forgot");
                   }}
                 >
-                  Go Back
+                  返回
                 </a>
               </p>
             </div>
           )}
           {state === "firsttime" && (
             <Field
-              label="Company name"
+              label="公司名称"
               required
               autoFocus
               minLength={2}
@@ -231,7 +231,7 @@ export default function Welcome({
           )}
           {(state === "register" || state === "firsttime") && (
             <Field
-              label="Name"
+              label="名称"
               required
               {...form.register("name")}
               autoFocus={state === "register"}
@@ -244,7 +244,7 @@ export default function Welcome({
             state === "forgot" ||
             state === "firsttime") && (
             <Field
-              label="Email Address"
+              label="电子邮件地址"
               required
               type="email"
               {...form.register("email")}
@@ -256,7 +256,7 @@ export default function Welcome({
             state === "register" ||
             state === "firsttime") && (
             <Field
-              label="Password"
+              label="密码"
               required
               type="password"
               {...form.register("password")}
@@ -273,7 +273,7 @@ export default function Welcome({
                       setState("forgot");
                     }}
                   >
-                    Forgot Password?
+                    忘记密码？
                   </a>
                 ) : null
               }

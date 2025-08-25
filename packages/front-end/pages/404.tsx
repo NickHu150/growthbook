@@ -32,10 +32,10 @@ export default function Custom404() {
           className="font-weight-semibold mb-1"
           style={{ fontSize: "1.1rem" }}
         >
-          404 - Page Not Found
+          404 - 找不到页面
         </span>
         <br />
-        We looked, but we couldn&apos;t find the page you&apos;re looking for
+        我们找了，但找不到您要找的页面
       </div>
     </div>
   );

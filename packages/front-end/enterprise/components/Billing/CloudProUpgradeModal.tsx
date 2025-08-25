@@ -224,7 +224,7 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
           close();
           closeParent();
         }}
-        closeCta="Close"
+        closeCta="关闭"
         open={true}
         size="lg"
         trackingEventModalType="upgrade-to-pro"
@@ -232,10 +232,9 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
         showHeaderCloseButton={false}
       >
         <div className="container-fluid dashboard p-3 ">
-          <h3>Welcome to GrowthBook Pro!</h3>
+          <h3>欢迎使用 GrowthBook Pro！</h3>
           <span>
-            You&apos;re all set! Your organization now has access to all
-            GrowthBook Pro features.
+            您已准备就绪！您的组织现在可以访问所有 GrowthBook Pro 功能。
           </span>
         </div>
       </Modal>
@@ -249,14 +248,13 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
           className="mb-1"
           style={{ color: "var(--color-text-high)", fontSize: "20px" }}
         >
-          Upgrade to Pro
+          升级到专业版
         </h3>
         <p
           className="mb-0"
           style={{ color: "var(--color-text-mid)", fontSize: "16px" }}
         >
-          Get instant access to advanced experimentation, permissioning and
-          security features.
+          即时访问高级实验、权限和安全功能。
         </p>
       </>
     );
@@ -278,10 +276,10 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
       cta={
         <>
           {step === 1 ? (
-            "Start subscription"
+            "开始订阅"
           ) : (
             <>
-              Next <PiCaretRight />
+              下一步 <PiCaretRight />
             </>
           )}
         </>
@@ -293,13 +291,13 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
       loading={loading}
       backButton={true}
     >
-      <Page display="Adjust Invoice Settings">
+      <Page display="调整发票设置">
         <div className="container-fluid dashboard p-3 ">
           {header()}
           <div className="py-4">
-            <label>Billing Email</label>
+            <label>账单电子邮件</label>
             <Text as="p" mb="2">
-              Monthly invoices will be sent to this address
+              每月的发票将发送到此地址
             </Text>
             <Field
               type="email"
@@ -311,10 +309,10 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
           <Flex align="center" width="100%" gap="4">
             <Box style={{ width: "50%" }}>
               <SelectField
-                label="Tax ID type"
+                label="税号类型"
                 options={taxIdTypeOptions}
                 value={form.watch("taxIdType") || ""}
-                placeholder="(optional)"
+                placeholder="(可选的)"
                 onChange={(value) =>
                   form.setValue("taxIdType", value as TaxIdType)
                 }
@@ -325,11 +323,11 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
               <Field
                 type="text"
                 {...form.register("taxIdValue")}
-                placeholder="(optional)"
+                placeholder="(可选的)"
                 label={
                   <Flex align="center">
-                    <span className="mr-1">Tax ID</span>
-                    <Tooltip body="Enter your tax id here. E.G. VAT or EIN">
+                    <span className="mr-1">税号</span>
+                    <Tooltip body="在此处输入您的税号。例如，增值税或雇主识别号">
                       <GBInfo />
                     </Tooltip>
                   </Flex>
@@ -339,24 +337,21 @@ export default function CloudProUpgradeModal({ close, closeParent }: Props) {
           </Flex>
         </div>
       </Page>
-      <Page display="Add Payment Method">
+      <Page display="添加付款方式">
         <div className="container-fluid dashboard p-3 ">
           {header()}
           <div className="py-4">
             <PaymentElement />
             <p className="pt-3" style={{ marginBottom: "12px" }}>
-              The cost is <strong>$20 per seat per month</strong>. You will be
-              charged a pro-rated amount immediately for the remainder of the
-              current month and it will renew automatically on the 1st of each
-              subsequent month. Cancel anytime.
+              费用为每席每月 20 美元。您将在本月剩余时间内立即按比例收取费用，并将在下个月的 1 号自动续订。随时取消。
             </p>
             <Separator size="4" mb="3" />
             <div className="mb-4">
               <Checkbox
-                label="Customize Invoice"
+                label="自定义发票"
                 value={showAddress}
                 setValue={setShowAddress}
-                description="Add a full billing address and optionally customize the name displayed on invoices."
+                description="添加完整的帐单地址，并可选择自定义发票上显示的名称。"
               />
             </div>
             {showAddress && (

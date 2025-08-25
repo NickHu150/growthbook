@@ -34,7 +34,7 @@ export default function AddPaymentMethodModal({
       const { error: submitError } = await elements.submit();
       if (submitError) {
         throw new Error(
-          submitError.message || "Unable to validate payment method inputs",
+          submitError.message || "无法验证付款方式输入",
         );
       }
 
@@ -45,7 +45,7 @@ export default function AddPaymentMethodModal({
       });
 
       if (!setupIntent || !setupIntent.payment_method) {
-        throw new Error("Unable to save new payment method");
+        throw new Error("无法保存新的付款方式");
       }
 
       // Optionally, update the user's default payment method
@@ -67,9 +67,9 @@ export default function AddPaymentMethodModal({
     <Modal
       open={true}
       trackingEventModalType="add-edit-payment-method"
-      cta="Save Payment Method"
+      cta="保存付款方式"
       close={() => onClose()}
-      header="Add Payment Method"
+      header="添加付款方式"
       submit={async () => await handleSubmit()}
     >
       <>
@@ -77,7 +77,7 @@ export default function AddPaymentMethodModal({
         {numOfMethods > 0 ? (
           <Flex align="center" justify="end" className="pt-3">
             <Checkbox
-              label="Set as Default Payment Method"
+              label="设为默认付款方式"
               value={defaultPaymentMethod}
               setValue={() => {
                 setDefaultPaymentMethod(!defaultPaymentMethod);
