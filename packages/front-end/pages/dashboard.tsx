@@ -18,7 +18,7 @@ export default function Analysis(): React.ReactElement {
   if (experimentsError || definitionsError) {
     return (
       <div className="alert alert-danger">
-        An error occurred: {experimentsError?.message || definitionsError}
+        发生错误：{experimentsError?.message || definitionsError}
       </div>
     );
   }

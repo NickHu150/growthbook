@@ -11,10 +11,8 @@ const CustomFieldsPage = (): React.ReactElement => {
     return (
       <div className="contents container-fluid pagecontents">
         <PremiumEmptyState
-          title="Custom Fields"
-          description="Custom fields allow you to add additional meta data to
-                  experiments and feature flags that can be required or
-                  optional."
+          title="自定义字段"
+          description="自定义字段允许您向实验和功能标志添加额外的元数据，这些元数据可以是必需的或可选的。"
           commercialFeature="custom-metadata"
           learnMoreLink="https://docs.growthbook.io/using/growthbook-best-practices#custom-fields"
         />
@@ -25,11 +23,8 @@ const CustomFieldsPage = (): React.ReactElement => {
   return (
     <>
       <div className="contents container-fluid pagecontents">
-        <CustomFields section={"feature"} title={"Custom Feature Fields"} />
-        <CustomFields
-          section={"experiment"}
-          title={"Custom Experiment Fields"}
-        />
+        <CustomFields section={"feature"} title={"自定义功能字段"} />
+        <CustomFields section={"experiment"} title={"自定义实验字段"} />
       </div>
     </>
   );

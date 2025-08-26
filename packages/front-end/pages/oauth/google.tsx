@@ -12,7 +12,7 @@ const Google: FC = () => {
     // Get code from querystring
     const c = window.location.search.match(/code=([^&]+)/)?.[1];
     if (!c) {
-      setError(new Error("Authentication failed"));
+      setError(new Error("验证失败"));
     } else {
       setCode(c);
     }
@@ -35,7 +35,7 @@ const Google: FC = () => {
 
   return (
     <div className="p-3">
-      <h3>Add Data Source</h3>
+      <h3>添加数据源</h3>
       <DataSourceForm
         existing={false}
         source="google-oauth"

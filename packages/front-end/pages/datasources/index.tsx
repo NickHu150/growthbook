@@ -105,16 +105,15 @@ function ManagedWarehouseDriver() {
         </div>
         <div className="text-center">
           {hasAccess ? (
-            <Badge label="New!" color="violet" variant="soft" />
+            <Badge label="新的！" color="violet" variant="soft" />
           ) : (
             <PaidFeatureBadge commercialFeature="managed-warehouse" />
           )}
           <h3 className="mb-3 mt-2">
-            Use GrowthBook Cloud&apos;s fully-managed warehouse to get started
-            quickly
+            使用 GrowthBook Cloud 的完全托管仓库快速入门
           </h3>
           <Button variant="solid" onClick={() => setOpen(true)}>
-            Try Now
+            立即尝试
           </Button>
         </div>
       </Flex>
@@ -178,7 +177,7 @@ const DataSourcesPage: FC = () => {
         />
       )}
       <div className="d-flex align-items-center mb-3">
-        <h1>Data Sources</h1>
+        <h1>数据源</h1>
         <div className="ml-auto" />
         {!hasFileConfig() && !demoDataSourceExists && (
           <Button
@@ -200,12 +199,12 @@ const DataSourcesPage: FC = () => {
             }}
             variant="soft"
           >
-            View Sample Data Source
+            查看示例数据源
           </Button>
         )}
         {demoDataSourceExists && demoProjectId && demoDataSourceId ? (
           <LinkButton href={`/datasources/${demoDataSourceId}`} variant="soft">
-            View Sample Data Source
+            查看示例数据源
           </LinkButton>
         ) : null}
         {!hasFileConfig() &&
@@ -214,13 +213,13 @@ const DataSourcesPage: FC = () => {
               disabled={currentProjectIsDemo}
               title={
                 currentProjectIsDemo
-                  ? "You cannot create a datasource under the demo project"
+                  ? "您不能在演示项目下创建数据源"
                   : ""
               }
               onClick={() => setNewModalData({})}
               ml="2"
             >
-              Add Data Source
+              添加数据源
             </Button>
           )}
       </div>
@@ -230,13 +229,12 @@ const DataSourcesPage: FC = () => {
         <div className="appbox p-5 mb-3">
           <div className="text-center mt-3">
             <h2 className="h1 mb-2">
-              Automatically Fetch Experiment Results &amp; Metric Values
+              自动获取实验结果和指标值
             </h2>
             <p className="mb-4">
-              GrowthBook is Warehouse Native, which means we can sit on top of
-              any SQL data without storing our own copy.
+              GrowthBook 是仓库原生的，这意味着我们可以位于任何 SQL 数据之上，而无需存储我们自己的副本。
               <br />
-              This approach is cheaper, more secure, and more flexible.
+              这种方法更便宜、更安全、更灵活。
             </p>
           </div>
           {showManagedWarehouse ? <ManagedWarehouseDriver /> : null}
@@ -245,8 +243,7 @@ const DataSourcesPage: FC = () => {
           <div className="mb-3 d-flex flex-column align-items-center justify-content-center w-100">
             <div className="mb-3">
               <h3>
-                {showManagedWarehouse ? "Or connect" : "Connect"} to your
-                existing data warehouse:
+                {showManagedWarehouse ? "或连接" : "连接"} 到您现有的数据仓库：
               </h3>
             </div>
 
@@ -272,10 +269,9 @@ const DataSourcesPage: FC = () => {
 
             {!showManagedWarehouse ? (
               <Callout status="info" mt="5">
-                Don&apos;t have a data warehouse yet? We recommend using
-                BigQuery with Google Analytics.{" "}
+                还没有数据仓库？我们建议将 BigQuery 与 Google Analytics 结合使用。{" "}
                 <DocLink docSection="ga4BigQuery">
-                  Learn more <FaExternalLinkAlt />
+                  了解更多 <FaExternalLinkAlt />
                 </DocLink>
               </Callout>
             ) : null}

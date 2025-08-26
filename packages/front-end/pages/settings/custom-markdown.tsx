@@ -21,7 +21,7 @@ const SaveMessage = ({ showMessage, close }) => {
             close();
           }}
         >
-          Settings saved
+          设置已保存
         </TempMessage>
       )}
     </div>
@@ -76,7 +76,7 @@ const CustomMarkdown: React.FC = () => {
     return (
       <div className="container-fluid pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -87,19 +87,18 @@ const CustomMarkdown: React.FC = () => {
       <div className="mb-4">
         <Link href="/settings">
           <GBCircleArrowLeft className="mr-1" />
-          Back to General Settings
+          返回常规设置
         </Link>
       </div>
-      <h1>Add Custom Markdown</h1>
+      <h1>添加自定义 Markdown</h1>
       <p>
-        Custom markdown allows you to provide organization-specific guidance and
-        documentation to your team on key pages within GrowthBook.
+        自定义 Markdown 允许您在 GrowthBook 的关键页面上为您的团队提供特定于组织的指导和文档。
         <br />
-        <DocLink docSection={"customMarkdown"}>View Documentation &gt;</DocLink>
+        <DocLink docSection={"customMarkdown"}>查看文档 &gt;</DocLink>
       </p>
       <Modal
         trackingEventModalType=""
-        cta={"Save"}
+        cta={"保存"}
         header={false}
         open
         inline
@@ -108,34 +107,34 @@ const CustomMarkdown: React.FC = () => {
           <SaveMessage showMessage={saveMsg} close={() => setSaveMsg(false)} />
         }
       >
-        <h3 className="mb-3">Features List</h3>
+        <h3 className="mb-3">功能列表</h3>
         <MarkdownInput
           value={form.watch("featureListMarkdown") || ""}
           setValue={(value) => form.setValue("featureListMarkdown", value)}
         />
-        <h3 className="my-3">Feature Page</h3>
+        <h3 className="my-3">功能页面</h3>
         <MarkdownInput
           value={form.watch("featurePageMarkdown") || ""}
           setValue={(value) => form.setValue("featurePageMarkdown", value)}
         />
         <hr />
-        <h3 className="mb-3">Experiments List</h3>
+        <h3 className="mb-3">实验列表</h3>
         <MarkdownInput
           value={form.watch("experimentListMarkdown") || ""}
           setValue={(value) => form.setValue("experimentListMarkdown", value)}
         />
-        <h3 className="my-3">Experiment Page</h3>
+        <h3 className="my-3">实验页面</h3>
         <MarkdownInput
           value={form.watch("experimentPageMarkdown") || ""}
           setValue={(value) => form.setValue("experimentPageMarkdown", value)}
         />
         <hr />
-        <h3 className="mb-3">Metrics List</h3>
+        <h3 className="mb-3">指标列表</h3>
         <MarkdownInput
           value={form.watch("metricListMarkdown") || ""}
           setValue={(value) => form.setValue("metricListMarkdown", value)}
         />
-        <h3 className="my-3">Metric Page</h3>
+        <h3 className="my-3">指标页面</h3>
         <MarkdownInput
           value={form.watch("metricPageMarkdown") || ""}
           setValue={(value) => form.setValue("metricPageMarkdown", value)}

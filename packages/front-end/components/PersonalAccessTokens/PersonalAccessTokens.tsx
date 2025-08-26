@@ -34,11 +34,10 @@ export const PersonalAccessTokens: FC<PersonalAccessTokensProps> = ({
       )}
 
       <div className="mb-4">
-        <h1>Personal Access Tokens</h1>
+        <h1>个人访问令牌</h1>
         <p className="text-gray">
-          Personal Access Tokens have full read and write access to your
-          account. Because of this, they must be kept secure and{" "}
-          <strong>must not be exposed to others</strong>.
+          个人访问令牌对您的帐户具有完全的读写权限。因此，它们必须保持安全，并且{" "}
+          <strong>不得向他人泄露</strong>。
         </p>
         {accessTokens.length > 0 && (
           <ApiKeysTable
@@ -56,14 +55,13 @@ export const PersonalAccessTokens: FC<PersonalAccessTokensProps> = ({
             setOpen(true);
           }}
         >
-          <FaKey /> Create New Personal Access Token
+          <FaKey /> 创建新的个人访问令牌
         </button>
       </div>
 
       <div className="mb-5">
         <div className="alert alert-info">
-          Administrators can also create read-only keys for an organization on
-          the <Link href="/settings/keys">API Keys</Link> page.
+          管理员还可以在 <Link href="/settings/keys">API 密钥</Link> 页面上为组织创建只读密钥。
         </div>
       </div>
     </div>
@@ -90,7 +88,7 @@ export const PersonalAccessTokensContainer = () => {
         }),
       });
       if (!res.key.key) {
-        throw new Error("Could not load the secret key");
+        throw new Error("无法加载密钥");
       }
       return res.key.key;
     },

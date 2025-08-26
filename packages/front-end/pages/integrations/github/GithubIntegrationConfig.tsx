@@ -27,9 +27,9 @@ export default function GithubIntegrationConfig({
   );
   return (
     <div>
-      <h2>Configuration</h2>
+      <h2>配置</h2>
 
-      <h3>Repositories to Watch</h3>
+      <h3>要监视的存储库</h3>
       {githubIntegration.repositories.map((repo) => (
         <div key={repo.id}>
           <input

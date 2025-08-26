@@ -80,7 +80,7 @@ const ExperimentPage = (): ReactElement => {
   }, [data, router]);
 
   if (error) {
-    return <div>There was a problem loading the experiment</div>;
+    return <div>加载实验时出现问题</div>;
   }
   if (!data) {
     return <LoadingOverlay />;
@@ -167,7 +167,7 @@ const ExperimentPage = (): ReactElement => {
           onClose={() => setDuplicateModalOpen(false)}
           initialValue={{
             ...experiment,
-            name: experiment.name + " (Copy)",
+            name: experiment.name + " (复制)",
             trackingKey: "",
           }}
           source="duplicate-eid"
@@ -228,7 +228,7 @@ const ExperimentPage = (): ReactElement => {
       <PageHead
         breadcrumb={[
           {
-            display: "Experiments",
+            display: "实验",
             href: `/experiments`,
           },
           { display: experiment.name },

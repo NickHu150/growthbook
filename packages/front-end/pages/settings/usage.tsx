@@ -11,7 +11,7 @@ export default function UsagePage() {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -21,9 +21,7 @@ export default function UsagePage() {
     return (
       <div className="container pagecontents">
         <div className="alert alert-info">
-          This page is not available for organizations whose plan is managed by
-          Vercel. Please go to your Vercel Integration Dashboard to view your
-          usage and billing information.
+          此页面不适用于其计划由 Vercel 管理的组织。请转到您的 Vercel 集成仪表板查看您的使用情况和账单信息。
         </div>
       </div>
     );

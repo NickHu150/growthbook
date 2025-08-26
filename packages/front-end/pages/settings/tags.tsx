@@ -34,7 +34,7 @@ const TagsPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -51,18 +51,18 @@ const TagsPage: FC = () => {
           />
         )}
         <Flex justify="between" align="start">
-          <Heading as="h1">Tags</Heading>
+          <Heading as="h1">标签</Heading>
           {permissionsUtil.canCreateAndUpdateTag() ? (
-            <Button onClick={() => setModalOpen({})}>Add Tag</Button>
+            <Button onClick={() => setModalOpen({})}>添加标签</Button>
           ) : null}
         </Flex>
-        <p>Organize features, experiments, metrics, and more with tags.</p>
+        <p>使用标签整理功能、实验、指标等。</p>
         {tags?.length > 0 && (
           <>
             <div className="row mb-2 align-items-center">
               <div className="col-auto">
                 <Field
-                  placeholder="Search..."
+                  placeholder="搜索..."
                   type="search"
                   {...searchInputProps}
                 />
@@ -71,9 +71,9 @@ const TagsPage: FC = () => {
             <table className="table appbox gbtable table-hover">
               <thead>
                 <tr>
-                  <SortableTH field="id">Tag name</SortableTH>
-                  <SortableTH field="description">Description</SortableTH>
-                  <th>Preview</th>
+                  <SortableTH field="id">标签名称</SortableTH>
+                  <SortableTH field="description">描述</SortableTH>
+                  <th>预览</th>
                   <th style={{ width: 140 }}></th>
                 </tr>
               </thead>
@@ -108,9 +108,9 @@ const TagsPage: FC = () => {
                         ) : null}
                         {permissionsUtil.canDeleteTag() ? (
                           <DeleteButton
-                            deleteMessage="Are you sure? Deleting a tag will remove it from all features, metrics, and experiments."
+                            deleteMessage="确定吗？删除标签会将其从所有功能、指标和实验中移除。"
                             className="tr-hover"
-                            displayName="Tag"
+                            displayName="标签"
                             onClick={async () => {
                               await apiCall(`/tag/`, {
                                 method: "DELETE",
@@ -127,7 +127,7 @@ const TagsPage: FC = () => {
                 {!items.length && isFiltered && (
                   <tr>
                     <td colSpan={4} align={"center"}>
-                      No matching tags found.
+                      未找到匹配的标签。
                     </td>
                   </tr>
                 )}

@@ -22,7 +22,7 @@ export default function OAuthCallbackPage() {
       .then((res) => res.json())
       .then((json) => {
         if (json?.status !== 200) {
-          setError(json?.message || "An unknown error occurred");
+          setError(json?.message || "发生未知错误");
         } else {
           try {
             let redirect =

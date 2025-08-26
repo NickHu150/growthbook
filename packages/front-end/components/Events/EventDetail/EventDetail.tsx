@@ -37,7 +37,7 @@ export const EventDetailContainer = () => {
 
   if (error || (!isValidating && !event)) {
     return (
-      <div className="alert alert-danger">Unable to fetch event {eventId}</div>
+      <div className="alert alert-danger">无法获取事件 {eventId}</div>
     );
   }
 

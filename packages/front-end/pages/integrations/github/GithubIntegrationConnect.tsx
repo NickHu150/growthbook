@@ -33,12 +33,11 @@ export default function GithubIntegrationConnect({
     return (
       <div>
         <p>
-          The GitHub integration will allow you to access neat features like{" "}
-          <strong>Feature Flag Code References</strong> to help identify where
-          in your codebase a feature flag is being used.
+          GitHub 集成将允许您访问一些很酷的功能，例如{" "}
+          <strong>功能标志代码参考</strong> 以帮助识别功能标志在代码库中的使用位置。
         </p>
         <a href="https://github.com/apps/growthbook-github-integration/installations/new">
-          Install the GitHub Integration
+          安装 GitHub 集成
         </a>
       </div>
     );
@@ -47,14 +46,14 @@ export default function GithubIntegrationConnect({
   if (error)
     return (
       <div>
-        <p>There was an error connecting your GitHub account:</p>
+        <p>连接您的 GitHub 帐户时出错：</p>
         <pre>{error}</pre>
       </div>
     );
 
   return (
     <div>
-      <LoadingSpinner /> Connecting your GrowthBook account to GitHub...
+      <LoadingSpinner /> 正在将您的 GrowthBook 帐户连接到 GitHub...
     </div>
   );
 }

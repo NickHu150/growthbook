@@ -165,20 +165,20 @@ export const SimulateFeatureValues: FC<{
     return <LoadingOverlay />;
   }
   if (!environments || environments.length === 0) {
-    return <div>No environments added</div>;
+    return <div>未添加任何环境</div>;
   }
   let attributeText = (
-    <>Select Archetype or edit user attributes to see feature results.</>
+    <>选择原型或编辑用户属性以查看功能结果。</>
   );
   let attributeNodes: ReactNode[] = [];
   if (attributes && Object.keys(attributes).length > 0) {
     attributeText = archetype ? (
       <>
-        Showing feature results for archetype{" "}
+        显示原型的功能结果{" "}
         <strong>{archetypeMap.get(archetype)?.name ?? "?"}</strong>:
       </>
     ) : (
-      <>Showing feature results for users with attributes: </>
+      <>显示具有以下属性的用户的功能结果： </>
     );
     const attrsLength = Object.keys(attributes).length;
     attributeNodes = Object.keys(attributes).map((key, i) => {
@@ -186,7 +186,7 @@ export const SimulateFeatureValues: FC<{
       return (
         <Fragment key={`attr-${key}-${i}`}>
           <strong>{key}</strong>: <strong>{attrValue}</strong>
-          {i === attrsLength - 1 ? "" : i === attrsLength - 2 ? ", and " : ", "}
+          {i === attrsLength - 1 ? "" : i === attrsLength - 2 ? "，和 " : "， "}
         </Fragment>
       );
     });
@@ -200,7 +200,7 @@ export const SimulateFeatureValues: FC<{
     }),
   ];
   if (showAllEnv) {
-    environmentOptions.unshift({ label: "All", value: "all" });
+    environmentOptions.unshift({ label: "所有", value: "all" });
   }
 
   const featureTableResults = (
@@ -218,7 +218,7 @@ export const SimulateFeatureValues: FC<{
                   setEditAttributesModalOpen(true);
                 }}
               >
-                ({attributes && Object.keys(attributes).length ? "edit" : "set"}
+                ({attributes && Object.keys(attributes).length ? "编辑" : "设置"}
                 )
               </a>
             </div>
@@ -233,7 +233,7 @@ export const SimulateFeatureValues: FC<{
           <div className="mb-2 d-flex">
             <div className="mr-2">
               <Field
-                placeholder="Search..."
+                placeholder="搜索..."
                 type="search"
                 {...searchInputProps}
               />
@@ -245,7 +245,7 @@ export const SimulateFeatureValues: FC<{
               {showEnvDropdown && (
                 <div className="d-flex flex-nowrap">
                   <div className="mr-1 align-self-center small">
-                    Environment:
+                    环境：
                   </div>
                   <SelectField
                     value={!selectedEnvironment ? "all" : selectedEnvironment}
@@ -266,10 +266,10 @@ export const SimulateFeatureValues: FC<{
               style={{ top: "56px", zIndex: 900 }}
             >
               <tr>
-                <th>Feature Name</th>
-                <SortableTH field="tags">Tags</SortableTH>
+                <th>功能名称</th>
+                <SortableTH field="tags">标签</SortableTH>
                 <th style={{ borderRight: "1px solid rgba(155,155,155, 0.2)" }}>
-                  Prerequisites
+                  先决条件
                 </th>
                 {selectedEnvironment !== "all" ? (
                   <th>{selectedEnvironment}</th>
@@ -392,7 +392,7 @@ export const SimulateFeatureValues: FC<{
               })}
               {!items.length && (
                 <tr>
-                  <td colSpan={numColumns}>No matching features</td>
+                  <td colSpan={numColumns}>无匹配功能</td>
                 </tr>
               )}
             </tbody>
@@ -421,10 +421,7 @@ export const SimulateFeatureValues: FC<{
             <FiAlertTriangle />
           </div>
           <div>
-            These results use the JS SDK, which supports the V2 hashing
-            algorithm. If you use one of the older or unsupported SDKs, you may
-            want to change the hashing algorithm of the experiment to v1 to
-            ensure accurate results. Click for more info.
+            这些结果使用 JS SDK，它支持 V2 哈希算法。如果您使用较旧或不受支持的 SDK 之一，您可能需要将实验的哈希算法更改为 v1 以确保结果准确。单击以获取更多信息。
           </div>
           <div className="p-2">
             <FaChevronRight
@@ -436,7 +433,7 @@ export const SimulateFeatureValues: FC<{
         </div>
         {openWarning && (
           <div className="p-3">
-            The following SDK versions support V2 hashing:
+            以下 SDK 版本支持 V2 哈希：
             <MinSDKVersionsList capability="bucketingV2" />
           </div>
         )}
@@ -448,10 +445,8 @@ export const SimulateFeatureValues: FC<{
     return (
       <div className="mb-3">
         <PremiumEmptyState
-          title="Simulate feature/experiment states for Users"
-          description=" For any set of attributes or archetype, simulate what feature
-              values they have or would receive. Simulation is a premium
-              feature."
+          title="为用户模拟功能/实验状态"
+          description=" 对于任何属性集或原型，模拟它们拥有或将收到的功能值。模拟是一项高级功能。"
           commercialFeature="simulate"
           learnMoreLink="https://docs.growthbook.io/features/rules#simulation"
         />
@@ -480,7 +475,7 @@ export const SimulateFeatureValues: FC<{
       <div className="">
         <div className="row mb-3">
           <div className="col">
-            <h1>Simulate Features</h1>
+            <h1>模拟功能</h1>
           </div>
           <div className="col-auto">
             <Button
@@ -488,8 +483,8 @@ export const SimulateFeatureValues: FC<{
                 setEditAttributesModalOpen(true);
               }}
             >
-              {attributes && Object.keys(attributes).length ? "Edit" : "Set"}{" "}
-              Attributes
+              {attributes && Object.keys(attributes).length ? "编辑" : "设置"}{" "}
+              属性
             </Button>
           </div>
         </div>
@@ -501,11 +496,10 @@ export const SimulateFeatureValues: FC<{
               <>
                 <p className="mb-2 premium">
                   <FaInfoCircle className="mr-1" />
-                  This is a premium feature
+                  这是一项高级功能
                 </p>
                 <p>
-                  Simulate features using different user attributes to see which
-                  values they would be assigned.
+                  使用不同的用户属性模拟功能，以查看将为它们分配哪些值。
                 </p>
               </>
             }

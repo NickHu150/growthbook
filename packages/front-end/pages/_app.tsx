@@ -4,6 +4,12 @@ import "@/styles/radix-config.css";
 import "@/styles/global-radix-overrides.scss";
 import "@/styles/global.scss";
 
+// NB: Order matters
+import "@radix-ui/themes/styles.css";
+import "@/styles/radix-config.css";
+import "@/styles/global-radix-overrides.scss";
+import "@/styles/global.scss";
+
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
@@ -111,7 +117,7 @@ function App({
   useEffect(() => {
     // Load feature definitions JSON from GrowthBook API
     growthbook.init({ streaming: true }).catch(() => {
-      console.log("Failed to fetch GrowthBook feature definitions");
+      console.log("无法获取 GrowthBook 功能定义");
     });
   }, []);
 
@@ -225,7 +231,7 @@ function App({
       ) : error ? (
         <div className="container">
           <div className="alert alert-danger">
-            Error Initializing GrowthBook: {error}
+            初始化 GrowthBook 时出错：{error}
           </div>
         </div>
       ) : (

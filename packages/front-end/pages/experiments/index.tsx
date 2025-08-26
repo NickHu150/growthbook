@@ -80,7 +80,7 @@ const ExperimentsPage = (): React.ReactElement => {
   if (error) {
     return (
       <div className="alert alert-danger">
-        An error occurred: {error.message}
+        发生错误： {error.message}
       </div>
     );
   }
@@ -101,21 +101,21 @@ const ExperimentsPage = (): React.ReactElement => {
     <DropdownMenu
       trigger={
         <Button icon={<PiCaretDown />} iconPosition="right">
-          &nbsp;Add
+          &nbsp;添加
         </Button>
       }
       menuPlacement="end"
     >
       {canAddExperiment && (
         <DropdownMenuItem onClick={() => setOpenNewExperimentModal(true)}>
-          Create New Experiment
+          创建新实验
         </DropdownMenuItem>
       )}
       {canAddExperiment && (
         <>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setOpenImportExperimentModal(true)}>
-            Import Existing Experiment
+            导入现有实验
           </DropdownMenuItem>
         </>
       )}
@@ -128,7 +128,7 @@ const ExperimentsPage = (): React.ReactElement => {
         <div className="my-3">
           <div className="filters md-form row align-items-center">
             <div className="col-auto">
-              <h1>Experiments</h1>
+              <h1>实验</h1>
             </div>
             <div style={{ flex: 1 }} />
             {showViewSampleButton && <ViewSampleDataButton />}
@@ -139,21 +139,21 @@ const ExperimentsPage = (): React.ReactElement => {
           <CustomMarkdown page={"experimentList"} />
           {!hasExperiments && analyzeExisting ? (
             <EmptyState
-              title="Analyze Experiment Results"
-              description="Use our powerful query and stats engine to analyze experiment results using data from your warehouse."
+              title="分析实验结果"
+              description="使用我们强大的查询和统计引擎，利用您的仓库数据分析实验结果。"
               leftButton={
                 <LinkButton
                   href="https://docs.growthbook.io/app/importing-experiments"
                   variant="outline"
                   external
                 >
-                  View docs
+                  查看文档
                 </LinkButton>
               }
               rightButton={
                 canAddExperiment && (
                   <Button onClick={() => setOpenImportExperimentModal(true)}>
-                    Import Existing Experiment
+                    导入现有实验
                   </Button>
                 )
               }
@@ -161,30 +161,29 @@ const ExperimentsPage = (): React.ReactElement => {
           ) : !hasExperiments && !analyzeExisting ? (
             <>
               <EmptyState
-                title="Create Your First Experiment"
-                description="Run unlimited tests with linked feature flags, URL redirects or the Visual Editor."
+                title="创建您的第一个实验"
+                description="通过链接的功能标志、URL 重定向或可视化编辑器运行无限制的测试。"
                 leftButton={
                   <LinkButton
                     href="https://docs.growthbook.io/experiments"
                     variant="outline"
                     external
                   >
-                    View docs
+                    查看文档
                   </LinkButton>
                 }
                 rightButton={
                   canAddExperiment && (
                     <Button onClick={() => setOpenNewExperimentModal(true)}>
-                      Create New Experiment
+                      创建新实验
                     </Button>
                   )
                 }
               />
               <Callout status="info">
-                Want to analyze results of an existing experiment that you ran
-                elsewhere?{" "}
+                想要分析您在其他地方运行的现有实验的结果吗？{" "}
                 <Link href="/getstarted/imported-experiment-guide">
-                  Learn More
+                  了解更多
                 </Link>
               </Callout>
             </>
@@ -199,7 +198,7 @@ const ExperimentsPage = (): React.ReactElement => {
                   <div className="row align-items-center mb-3">
                     <div className="col-auto d-flex">
                       <TabsList>
-                        <TabsTrigger value="all">All Experiments</TabsTrigger>
+                        <TabsTrigger value="all">所有实验</TabsTrigger>
                         {["running", "drafts", "stopped", "archived"].map(
                           (tab, i) => {
                             if (tab === "archived" && !hasArchived) return null;
@@ -231,7 +230,7 @@ const ExperimentsPage = (): React.ReactElement => {
                   >
                     <Box flexBasis="300px" flexShrink="0">
                       <Field
-                        placeholder="Search..."
+                        placeholder="搜索..."
                         type="search"
                         {...searchInputProps}
                       />

@@ -33,7 +33,7 @@ const WebhooksPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -45,20 +45,18 @@ const WebhooksPage: FC = () => {
         <EventWebHookListContainer />
 
         <div className="mt-5">
-          <h2>Webhook Secrets</h2>
+          <h2>Webhook 密钥</h2>
           <p>
-            Define secret variables that can be used within your webhook
-            endpoints or headers. Simply reference them using Handlebars syntax.
-            For example, <code>{"{{ MY_SECRET }}"}</code>.
+            定义可在您的 Webhook 端点或标头中使用的密钥变量。只需使用 Handlebars 语法引用它们。例如，<code>{"{{ MY_SECRET }}"}</code>。
           </p>
           <table className="table gbtable appbox">
             <thead>
               <tr>
-                <th>Key</th>
-                <th>Description</th>
-                <th>Allowed Origins</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th>密钥</th>
+                <th>描述</th>
+                <th>允许的源</th>
+                <th>创建时间</th>
+                <th>更新时间</th>
                 <th></th>
               </tr>
             </thead>
@@ -73,7 +71,7 @@ const WebhooksPage: FC = () => {
                     {secret.allowedOrigins?.length ? (
                       secret.allowedOrigins.join(", ")
                     ) : (
-                      <em>Any</em>
+                      <em>任何</em>
                     )}
                   </td>
                   <td>{datetime(secret.dateCreated)}</td>
@@ -88,7 +86,7 @@ const WebhooksPage: FC = () => {
                           setEditSecretId(secret.id);
                         }}
                       >
-                        Edit
+                        编辑
                       </a>
                       <DeleteButton
                         onClick={async () => {
@@ -98,8 +96,8 @@ const WebhooksPage: FC = () => {
                           await mutateDefinitions();
                         }}
                         className="dropdown-item"
-                        displayName="Webhook Secret"
-                        text="Delete Secret"
+                        displayName="Webhook 密钥"
+                        text="删除密钥"
                       />
                     </MoreMenu>
                   </td>
@@ -108,7 +106,7 @@ const WebhooksPage: FC = () => {
             </tbody>
           </table>
           <Button variant="solid" onClick={() => setNewSecretOpen(true)}>
-            Add Webhook Secret
+            添加 Webhook 密钥
           </Button>
         </div>
       </div>

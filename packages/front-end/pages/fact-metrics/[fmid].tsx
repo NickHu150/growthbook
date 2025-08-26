@@ -66,7 +66,7 @@ function FactTableLink({ id }: { id?: string }) {
   const { getFactTableById } = useDefinitions();
   const factTable = getFactTableById(id || "");
 
-  if (!factTable) return <em className="text-muted">Unknown Fact Table</em>;
+  if (!factTable) return <em className="text-muted">未知的事实表</em>;
 
   return (
     <Link href={`/fact-tables/${factTable.id}`}>
@@ -109,40 +109,36 @@ function MetricType({
   if (type === "proportion") {
     return (
       <div>
-        <strong>Proportion Metric</strong> - Percent of experiment users who
-        exist in a Fact Table
+        <strong>比例指标</strong> - 在事实表中存在的实验用户百分比
       </div>
     );
   }
   if (type === "retention") {
     return (
       <div>
-        <strong>Retention Metric</strong> - Percent of experiment users who
-        exist in a Fact Table a certain period after experiment exposure
+        <strong>留存指标</strong> - 实验暴露后一段时间内在事实表中存在的实验用户百分比
       </div>
     );
   }
   if (type === "mean") {
     return (
       <div>
-        <strong>Mean Metric</strong> - The average of a numeric value among all
-        experiment users
+        <strong>平均指标</strong> - 所有实验用户的数值平均值
       </div>
     );
   }
   if (type === "ratio") {
     return (
       <div>
-        <strong>Ratio Metric</strong> - The ratio of two numeric values among
-        experiment users
+        <strong>比率指标</strong> - 实验用户中两个数值的比率
       </div>
     );
   }
   if (type === "quantile") {
     return (
       <div>
-        <strong>Quantile Metric</strong> - The quantile of values{" "}
-        {quantileType === "unit" ? "after aggregating per user" : ""}
+        <strong>分位数指标</strong> - 值的{" "}
+        {quantileType === "unit" ? "分位数（按用户汇总后）" : ""}
       </div>
     );
   }
@@ -203,8 +199,8 @@ export default function FactMetricPage() {
   if (!factMetric) {
     return (
       <div className="alert alert-danger">
-        Could not find the requested metric.{" "}
-        <Link href="/metrics">Back to all metrics</Link>
+        找不到请求的指标。{" "}
+        <Link href="/metrics">返回所有指标</Link>
       </div>
     );
   }
@@ -381,10 +377,10 @@ export default function FactMetricPage() {
       {showDeleteModal && (
         <Modal
           trackingEventModalType=""
-          header={`Delete Metric`}
+          header={`删除指标`}
           close={() => setShowDeleteModal(false)}
           open={true}
-          cta="Delete"
+          cta="删除"
           submitColor="danger"
           submit={async () => {
             await apiCall(`/fact-metrics/${factMetric.id}`, {
@@ -398,8 +394,7 @@ export default function FactMetricPage() {
           increasedElevation={true}
         >
           <p>
-            Are you sure you want to delete this metric? This action cannot be
-            undone.
+            您确定要删除此指标吗？此操作无法撤消。
           </p>
         </Modal>
       )}
@@ -415,10 +410,10 @@ export default function FactMetricPage() {
         <EditProjectsForm
           label={
             <>
-              Projects{" "}
+              项目{" "}
               <Tooltip
                 body={
-                  "The dropdown below has been filtered to only include projects where you have permission to update Metrics"
+                  "下面的下拉列表已筛选为仅包括您有权更新指标的项目"
                 }
               />
             </>
@@ -437,7 +432,7 @@ export default function FactMetricPage() {
             });
           }}
           mutate={mutateDefinitions}
-          entityName="Metric"
+          entityName="指标"
         />
       )}
       {editOwnerModal && (
@@ -470,15 +465,13 @@ export default function FactMetricPage() {
       )}
       <PageHead
         breadcrumb={[
-          { display: "Metrics", href: "/metrics" },
+          { display: "指标", href: "/metrics" },
           { display: factMetric.name },
         ]}
       />
       {factMetric.archived && (
         <div className="alert alert-secondary mb-2">
-          <strong>This metric is archived.</strong> Existing references will
-          continue working, but you will be unable to add this metric to new
-          experiments.
+          <strong>此指标已存档。</strong> 现有引用将继续有效，但您将无法将此指标添加到新实验中。
         </div>
       )}
       <div className="row mb-3">
@@ -511,7 +504,7 @@ export default function FactMetricPage() {
                   setEditOpen("open");
                 }}
               >
-                Edit Metric
+                编辑指标
               </DropdownMenuItem>
             )}
             <DropdownMenuItem
@@ -520,7 +513,7 @@ export default function FactMetricPage() {
                 setAuditModal(true);
               }}
             >
-              Audit log
+              审计日志
             </DropdownMenuItem>
             {canEdit || canDelete ? <DropdownMenuSeparator /> : null}
             {canEdit && (
@@ -536,7 +529,7 @@ export default function FactMetricPage() {
                   mutateDefinitions();
                 }}
               >
-                {factMetric.archived ? "Unarchive" : "Archive"}
+                {factMetric.archived ? "取消存档" : "存档"}
               </DropdownMenuItem>
             )}
             {canDelete && (
@@ -547,7 +540,7 @@ export default function FactMetricPage() {
                   setShowDeleteModal(true);
                 }}
               >
-                Delete
+                删除
               </DropdownMenuItem>
             )}
           </DropdownMenu>
@@ -556,7 +549,7 @@ export default function FactMetricPage() {
       <div className="row mb-4">
         {projects.length > 0 ? (
           <div className="col-auto">
-            Projects:{" "}
+            项目：{" "}
             {factMetric.projects.length > 0 ? (
               factMetric.projects.map((p) => (
                 <span className="badge badge-secondary mr-1" key={p}>
@@ -564,7 +557,7 @@ export default function FactMetricPage() {
                 </span>
               ))
             ) : (
-              <em className="mr-1">All Projects</em>
+              <em className="mr-1">所有项目</em>
             )}
             {canEdit && (
               <a
@@ -580,7 +573,7 @@ export default function FactMetricPage() {
           </div>
         ) : null}
         <div className="col-auto">
-          Tags: <SortedTags tags={factMetric.tags} />
+          标签： <SortedTags tags={factMetric.tags} />
           {canEdit && (
             <a
               className="ml-1 cursor-pointer"
@@ -591,7 +584,7 @@ export default function FactMetricPage() {
           )}
         </div>
         <div className="col-auto">
-          Owner:{` ${factMetric.owner ?? ""}`}
+          所有者：{` ${factMetric.owner ?? ""}`}
           {canEdit && (
             <a
               className="ml-1 cursor-pointer"
@@ -602,12 +595,12 @@ export default function FactMetricPage() {
           )}
         </div>
         <div className="col-auto">
-          Data source:{" "}
+          数据源：{" "}
           <Link
             href={`/datasources/${factMetric.datasource}`}
             className="font-weight-bold"
           >
-            {datasource?.name || "Unknown"}
+            {datasource?.name || "未知"}
           </Link>
         </div>
       </div>
@@ -616,7 +609,7 @@ export default function FactMetricPage() {
         <div className="col-12 col-md-8">
           <div className="appbox p-3 mb-5">
             <MarkdownInlineEdit
-              header={"Description"}
+            header={"描述"}
               canCreate={canEdit}
               canEdit={canEdit}
               value={factMetric.description}
@@ -637,21 +630,21 @@ export default function FactMetricPage() {
                       const hours = Math.floor(retryAfter / 3600);
                       const minutes = Math.floor((retryAfter % 3600) / 60);
                       throw new Error(
-                        `You have reached the AI request limit. Try again in ${hours} hours and ${minutes} minutes.`,
+                      `您已达到 AI 请求限制。请在 ${hours} 小时 ${minutes} 分钟后重试。`,
                       );
                     } else {
-                      throw new Error("Error getting AI suggestion");
+                    throw new Error("获取 AI 建议时出错");
                     }
                   },
                 );
                 if (res?.status !== 200) {
-                  throw new Error("Could not load AI suggestions");
+                throw new Error("无法加载 AI 建议");
                 }
                 return res.data.description;
               }}
-              aiButtonText="Suggest Description"
-              aiSuggestionHeader="Suggested Description"
-              emptyHelperText="Add a description to keep your team informed about how to apply this metric."
+            aiButtonText="建议描述"
+            aiSuggestionHeader="建议的描述"
+            emptyHelperText="添加描述以使您的团队了解如何应用此指标。"
               save={async (description) => {
                 await apiCall(`/fact-metrics/${factMetric.id}`, {
                   method: "PUT",
@@ -665,7 +658,7 @@ export default function FactMetricPage() {
           </div>
 
           <div className="mb-5">
-            <h3>Metric Definition</h3>
+            <h3>指标定义</h3>
             <div className="mb-2">
               <MetricType
                 type={factMetric.metricType}
@@ -677,57 +670,56 @@ export default function FactMetricPage() {
                 data={numeratorData}
                 header={
                   factMetric.metricType === "ratio"
-                    ? "Numerator"
-                    : "Metric Details"
+                    ? "分子"
+                    : "指标详情"
                 }
               />
             </div>
             {factMetric.metricType === "ratio" ? (
               <div className="appbox p-3 mb-3">
-                <DataList data={denominatorData} header="Denominator" />
+                <DataList data={denominatorData} header="分母" />
               </div>
             ) : null}
           </div>
 
           <div className="mb-4">
-            <h3>Metric Window</h3>
+            <h3>指标窗口</h3>
             <div className="appbox p-3 mb-3">
               {factMetric.windowSettings.type === "conversion" ? (
                 <>
-                  <em className="font-weight-bold">Conversion Window</em> -
-                  Require conversions to happen within{" "}
+                  <em className="font-weight-bold">转化窗口</em> -
+                  要求转化在{" "}
                   <strong>
                     {factMetric.windowSettings.windowValue}{" "}
                     {factMetric.windowSettings.windowUnit}
                   </strong>{" "}
-                  of first experiment exposure
+                  首次实验暴露后的
                   {factMetric.metricType === "retention"
-                    ? " plus the retention window"
+                    ? " 加上留存窗口"
                     : factMetric.windowSettings.delayValue
-                      ? " plus the metric delay"
+                      ? " 加上指标延迟"
                       : ""}
-                  .
+                  内。
                 </>
               ) : factMetric.windowSettings.type === "lookback" ? (
                 <>
-                  <em className="font-weight-bold">Lookback Window</em> -
-                  Require metric data to be in latest{" "}
+                  <em className="font-weight-bold">回溯窗口</em> -
+                  要求指标数据在实验的最近{" "}
                   <strong>
                     {factMetric.windowSettings.windowValue}{" "}
                     {factMetric.windowSettings.windowUnit}
                   </strong>{" "}
-                  of the experiment.
+                  内。
                 </>
               ) : (
                 <>
-                  <em className="font-weight-bold">Disabled</em> - Include all
-                  metric data after first experiment exposure
+                  <em className="font-weight-bold">已禁用</em> - 包括首次实验暴露后的所有指标数据
                   {factMetric.metricType === "retention"
-                    ? " plus the retention window"
+                    ? " 加上留存窗口"
                     : factMetric.windowSettings.delayValue
-                      ? " plus the metric delay"
+                      ? " 加上指标延迟"
                       : ""}
-                  .
+                  。
                 </>
               )}
             </div>

@@ -57,8 +57,7 @@ const BillingPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-info">
-          This page is not available for enterprise customers. Please contact
-          your account rep for any billing questions or changes.
+          此页面不适用于企业客户。如有任何账单问题或变更，请联系您的客户代表。
         </div>
       </div>
     );
@@ -68,7 +67,7 @@ const BillingPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -78,10 +77,7 @@ const BillingPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-info">
-          This page is not available for organizations whose plan is managed by
-          Vercel. Please go to your Vercel Integration Dashboard for any billing
-          information. If you&apos;d like to cancel your subscription, you can
-          do so in the GrowthBook Integration Dashboard in Vercel.
+          此页面不适用于其计划由 Vercel 管理的组织。请转到您的 Vercel 集成仪表板以获取任何账单信息。如果您想取消订阅，可以在 Vercel 的 GrowthBook 集成仪表板中进行操作。
         </div>
       </div>
     );
@@ -96,7 +92,7 @@ const BillingPage: FC = () => {
           commercialFeature={null}
         />
       )}
-      <h1>Plan Info</h1>
+      <h1>计划信息</h1>
       <div className="appbox p-3 border">
         {subscription?.status ? (
           <SubscriptionInfo />
@@ -105,7 +101,7 @@ const BillingPage: FC = () => {
             <div className="alert alert-warning mb-0">
               <div className="d-flex align-items-center">
                 <div>
-                  You are currently on the <strong>Starter Plan</strong>.
+                  您目前使用的是 <strong>入门计划</strong>。
                 </div>
                 <button
                   className="btn btn-primary ml-auto"
@@ -114,15 +110,15 @@ const BillingPage: FC = () => {
                     setUpgradeModal(true);
                   }}
                 >
-                  Upgrade Now
+                  立即升级
                 </button>
               </div>
             </div>
           </div>
         ) : (
           <p>
-            Contact <a href="mailto:sales@growthbook.io">sales@growthbook.io</a>{" "}
-            to make changes to your subscription plan.
+            联系 <a href="mailto:sales@growthbook.io">sales@growthbook.io</a>{" "}
+            以更改您的订阅计划。
           </p>
         )}
       </div>

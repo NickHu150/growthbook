@@ -10,7 +10,7 @@ const SlackIntegrationsPage: NextPage = () => {
     return (
       <div className="container-fluid pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您无权查看此页面。
         </div>
       </div>
     );

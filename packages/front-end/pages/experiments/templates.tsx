@@ -28,13 +28,13 @@ const ExperimentTemplatesPage: React.FC = () => {
       <Box className="contents experiments container-fluid pagecontents">
         <Flex mb="4" mt="2" align="center" justify="between">
           <Heading as="h1" mb="0">
-            Experiment Templates
+            实验模板
           </Heading>
           <Button
             onClick={() => setOpenTemplateModal({})}
             disabled={!hasTemplatesFeature || !canAddTemplate}
           >
-            Add Template
+            添加模板
           </Button>
         </Flex>
         <TemplatesPage

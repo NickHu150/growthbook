@@ -121,20 +121,17 @@ const DimensionsPage: FC = () => {
       <div className="p-3 container-fluid pagecontents">
         <div className="row mb-3">
           <div className="col d-flex">
-            <h1>User Dimensions</h1>
+            <h1>用户维度</h1>
             <DocLink
               docSection="dimensions"
               className="align-self-center ml-2 pb-1"
             >
-              View Documentation
+              查看文档
             </DocLink>
           </div>
         </div>
         <div className="alert alert-info">
-          Dimensions are only available if you connect GrowthBook to a
-          compatible data source (Snowflake, Redshift, BigQuery, ClickHouse,
-          Athena, Postgres, MySQL, MS SQL, Presto, Databricks, or Mixpanel).
-          Support for other data sources like Google Analytics is coming soon.
+          维度仅在您将 GrowthBook 连接到兼容的数据源（Snowflake、Redshift、BigQuery、ClickHouse、Athena、Postgres、MySQL、MS SQL、Presto、Databricks 或 Mixpanel）时可用。对 Google Analytics 等其他数据源的支持即将推出。
         </div>
       </div>
     );
@@ -143,7 +140,7 @@ const DimensionsPage: FC = () => {
   if (error) {
     return (
       <div className="alert alert-danger">
-        There was an error loading the list of dimensions
+        加载维度列表时出错
       </div>
     );
   }
@@ -158,20 +155,17 @@ const DimensionsPage: FC = () => {
       )}
       <Flex mb="3" direction="column">
         <Box>
-          <h1>Experiment Dimensions</h1>
+          <h1>实验维度</h1>
         </Box>
         <Box mb="3">
-          Experiment Dimensions are specific to the point-in-time that a unit is
-          put into an experiment - for example, &quot;browser&quot; or
-          &quot;referrer&quot;. They are defined via the experiment assignment
-          queries and are the preferred way to specify dimensions.
+          实验维度特定于将单位放入实验的时间点 - 例如，“浏览器”或“引荐来源”。它们通过实验分配查询定义，是指定维度的首选方法。
         </Box>
         <Table className="appbox table gbtable responsive-table">
           <TableHeader>
             <TableRow>
-              <SortableTH field="dimension">Name</SortableTH>
-              <SortableTH field="datasourceName">Data Source</SortableTH>
-              <SortableTH field="identifierTypes">Identifier Types</SortableTH>
+              <SortableTH field="dimension">名称</SortableTH>
+              <SortableTH field="datasourceName">数据源</SortableTH>
+              <SortableTH field="identifierTypes">标识符类型</SortableTH>
               <th></th>
             </TableRow>
           </TableHeader>
@@ -199,7 +193,7 @@ const DimensionsPage: FC = () => {
                         className="dropdown-item"
                         href={`/datasources/${item.datasourceId}#${EAQ_ANCHOR_ID}`}
                       >
-                        Manage via Data Source
+                        通过数据源管理
                       </Link>
                     </MoreMenu>
                   </TableCell>
@@ -212,7 +206,7 @@ const DimensionsPage: FC = () => {
       </Flex>
       <div className="row mb-3">
         <div className="col-auto d-flex">
-          <h1>Unit Dimensions</h1>
+          <h1>单位维度</h1>
         </div>
         <div style={{ flex: 1 }}></div>
         {orgCanCreateDimensions && hasCreateDimensionPermission && (
@@ -222,7 +216,7 @@ const DimensionsPage: FC = () => {
                 setDimensionForm({});
               }}
             >
-              Add Unit Dimension
+              添加单位维度
             </Button>
           </div>
         )}
@@ -231,10 +225,7 @@ const DimensionsPage: FC = () => {
         <div className="row mb-4">
           <div className="col-12">
             <p>
-              Unit Dimensions are attributes of your units - for example,
-              &quot;subscription plan&quot; or &quot;age group&quot;. GrowthBook
-              will join these dimensions to your units in the exposure query to
-              let you drill down into experiment results.
+              单位维度是您单位的属性 - 例如，“订阅计划”或“年龄组”。GrowthBook 会将这些维度连接到您在曝光查询中的单位，以便您深入了解实验结果。
             </p>
             <table
               className={clsx("table appbox gbtable", {
@@ -243,12 +234,12 @@ const DimensionsPage: FC = () => {
             >
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Owner</th>
-                  <th className="d-none d-sm-table-cell">Data Source</th>
-                  <th className="d-none d-md-table-cell">Identifier Type</th>
-                  <th className="d-none d-lg-table-cell">Definition</th>
-                  <th>Date Updated</th>
+                  <th>名称</th>
+                  <th>所有者</th>
+                  <th className="d-none d-sm-table-cell">数据源</th>
+                  <th className="d-none d-md-table-cell">标识符类型</th>
+                  <th className="d-none d-lg-table-cell">定义</th>
+                  <th>更新日期</th>
                   <th></th>
                 </tr>
               </thead>
@@ -309,7 +300,7 @@ const DimensionsPage: FC = () => {
                             <a
                               href="#"
                               className="tr-hover text-primary mr-3"
-                              title="Edit this dimension"
+                              title="编辑此维度"
                               onClick={(e) => {
                                 e.preventDefault();
                                 setDimensionForm(s);
@@ -323,7 +314,7 @@ const DimensionsPage: FC = () => {
                               link={true}
                               className={"tr-hover text-primary"}
                               displayName={s.name}
-                              title="Delete this dimension"
+                              title="删除此维度"
                               onClick={async () => {
                                 await apiCall(`/dimensions/${s.id}`, {
                                   method: "DELETE",
@@ -346,16 +337,15 @@ const DimensionsPage: FC = () => {
       )}
       {!error && dimensions.length === 0 && orgCanCreateDimensions && (
         <div className="alert alert-info">
-          You don&apos;t have any user dimensions defined yet.{" "}
+          您尚未定义任何用户维度。{" "}
           {hasCreateDimensionPermission &&
-            "Click the button above to create your first one."}
+            "单击上方的按钮创建您的第一个。"}
         </div>
       )}
       {!error && dimensions.length === 0 && !orgCanCreateDimensions && (
         <div className="alert alert-info">
-          It looks like you have a <code>config.yml</code> file. Dimensions
-          defined there will show up on this page.{" "}
-          <DocLink docSection="config_yml">View Documentation</DocLink>
+          看来你有一个 <code>config.yml</code> 文件。在那里定义的维度将显示在此页面上。{" "}
+          <DocLink docSection="config_yml">查看文档</DocLink>
         </div>
       )}
     </div>

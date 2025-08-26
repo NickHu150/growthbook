@@ -37,7 +37,7 @@ const VercelPage = () => {
           },
         });
 
-        if (!ret.ok) throw new Error(`Request failed: ${await ret.text()}`);
+        if (!ret.ok) throw new Error(`请求失败： ${await ret.text()}`);
 
         const { organizationId, projectId } = await ret.json();
 

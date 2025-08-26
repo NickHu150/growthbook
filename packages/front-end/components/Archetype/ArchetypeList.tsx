@@ -34,7 +34,7 @@ export const ArchetypeList: FC<{
   if (archetypeErrors) {
     return (
       <div className="alert alert-danger">
-        An error occurred fetching the lists of archetypes.
+        获取原型列表时出错。
       </div>
     );
   }
@@ -43,8 +43,8 @@ export const ArchetypeList: FC<{
     return (
       <div className="mb-3">
         <PremiumEmptyState
-          title="Create Reusable Archetypes"
-          description="Archetypes are named sets of attributes that help you test your features."
+          title="创建可重用原型"
+          description="原型是可帮助您测试功能的命名属性集。"
           commercialFeature="archetypes"
           learnMoreLink="https://docs.growthbook.io/features/rules#archetype"
         />
@@ -56,7 +56,7 @@ export const ArchetypeList: FC<{
     <>
       <div className="row mb-3">
         <div className="col">
-          <h1>Archetypes</h1>
+          <h1>原型</h1>
         </div>
         {canCreateGlobal && (
           <div className="col-auto">
@@ -65,24 +65,23 @@ export const ArchetypeList: FC<{
                 setEditArchetype({});
               }}
             >
-              Add Archetype
+              添加原型
             </Button>
           </div>
         )}
       </div>
       <p className="text-gray mb-3">
-        Archetypes are named sets of attributes that help you test your
-        features.
+        原型是可帮助您测试功能的命名属性集。
       </p>
       <div className="mb-3">
         <div className={`mb-3`}>
           <table className="table gbtable appbox ">
             <thead>
               <tr>
-                <th>Archetype</th>
-                <th>Projects</th>
-                <th>Owner</th>
-                <th>Public</th>
+                <th>原型</th>
+                <th>项目</th>
+                <th>所有者</th>
+                <th>公开</th>
                 <th style={{ width: "40px" }}></th>
               </tr>
             </thead>
@@ -91,11 +90,10 @@ export const ArchetypeList: FC<{
                 <tr>
                   <td colSpan={3}>
                     <div className="text-center p-3 ">
-                      No archetypes created. Click the &ldquo;Add
-                      Archetype&rdquo; button to create one.
+                      未创建任何原型。单击“添加原型”按钮创建一个。
                       {!canCreateGlobal && (
                         <div className="text-muted small">
-                          (You do not have permissions to create archetypes)
+                          （您没有创建原型的权限）
                         </div>
                       )}
                     </div>
@@ -114,7 +112,7 @@ export const ArchetypeList: FC<{
                   parsedAttributes = JSON.parse(archetype.attributes);
                 } catch {
                   console.error(
-                    "Failed to parse attributes. Invalid JSON string: " +
+                    "无法解析属性。无效的 JSON 字符串： " +
                       archetype.attributes,
                   );
                 }
@@ -165,9 +163,9 @@ export const ArchetypeList: FC<{
                     <td>{getUserDisplay(archetype.owner)}</td>
                     <td>
                       {archetype.isPublic ? (
-                        <span className="text-muted">Yes</span>
+                        <span className="text-muted">是</span>
                       ) : (
-                        <span className="text-muted">No</span>
+                        <span className="text-muted">否</span>
                       )}
                     </td>
                     <td className={styles.showOnHover}>
@@ -179,14 +177,14 @@ export const ArchetypeList: FC<{
                               setEditArchetype(archetype);
                             }}
                           >
-                            Edit
+                            编辑
                           </button>
                         ) : null}
                         {canDelete ? (
                           <DeleteButton
                             className="dropdown-item"
-                            displayName="Archetype"
-                            text="Delete"
+                            displayName="原型"
+                            text="删除"
                             useIcon={false}
                             onClick={async () => {
                               await apiCall(`/archetype/${archetype.id}`, {
@@ -212,8 +210,8 @@ export const ArchetypeList: FC<{
               initialValues={editArchetype}
               header={
                 Object.keys(editArchetype).length === 0
-                  ? "Create Archetype"
-                  : "Edit Archetype"
+                  ? "创建原型"
+                  : "编辑原型"
               }
               source={"archetype-list"}
             />

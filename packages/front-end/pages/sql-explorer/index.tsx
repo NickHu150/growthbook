@@ -37,7 +37,7 @@ export default function SqlExplorer() {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          Failed to load saved queries: {error.message}
+          加载已保存的查询失败：{error.message}
         </div>
       </div>
     );
@@ -50,9 +50,9 @@ export default function SqlExplorer() {
   return (
     <div className="container pagecontents">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1>SQL Explorer</h1>
+        <h1>SQL 浏览器</h1>
         {hasDatasource && canCreateSavedQueries && (
-          <Button onClick={() => setShowModal(true)}>New SQL Query</Button>
+          <Button onClick={() => setShowModal(true)}>新建 SQL 查询</Button>
         )}
       </div>
 
@@ -62,8 +62,7 @@ export default function SqlExplorer() {
           commercialFeature="saveSqlExplorerQueries"
         >
           <span>
-            Save your commonly run queries and build visualizations from the
-            results.
+            保存您经常运行的查询并根据结果构建可视化。
           </span>
         </PremiumCallout>
       </div>
@@ -71,17 +70,16 @@ export default function SqlExplorer() {
       {!hasSavedQueries ? (
         <>
           <div className="appbox p-5 text-center">
-            <h2>Explore Your Data</h2>
+            <h2>浏览您的数据</h2>
             <p>
-              Write SQL, view results, create visualizations, and share with
-              your team.
+              编写 SQL、查看结果、创建可视化并与您的团队共享。
             </p>
             <div className="mt-3">
               {!hasDatasource ? (
-                <LinkButton href="/datasources">Connect Data Source</LinkButton>
+                <LinkButton href="/datasources">连接数据源</LinkButton>
               ) : canCreateSavedQueries ? (
                 <Button onClick={() => setShowModal(true)}>
-                  Start Exploring
+                  开始浏览
                 </Button>
               ) : null}
             </div>
@@ -89,7 +87,7 @@ export default function SqlExplorer() {
             <div className="mt-5">
               <img
                 src="/images/empty-states/sql-explorer.png"
-                alt={"SQL Explorer"}
+                alt={"SQL 浏览器"}
                 style={{ width: "100%", maxWidth: "900px", height: "auto" }}
               />
             </div>
@@ -99,8 +97,7 @@ export default function SqlExplorer() {
         <div>
           <div className="mb-3">
             <p className="text-muted">
-              Write SQL, view results, create visualizations, and share with
-              your team.
+              编写 SQL、查看结果、创建可视化并与您的团队共享。
             </p>
           </div>
           <SavedQueriesList savedQueries={savedQueries} mutate={mutate} />

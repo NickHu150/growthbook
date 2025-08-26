@@ -116,7 +116,7 @@ const ExperimentsPage = (): React.ReactElement => {
   if (error) {
     return (
       <div className="alert alert-danger">
-        An error occurred: {error.message}
+        发生错误： {error.message}
       </div>
     );
   }
@@ -144,9 +144,9 @@ const ExperimentsPage = (): React.ReactElement => {
     return (
       <div className="contents container-fluid pagecontents">
         <PremiumEmptyState
-          h1="Bandits"
-          title="Run Adaptive Experiments with Bandits"
-          description="Bandits automatically guide more traffic to better variants."
+          h1="老虎机"
+          title="使用老虎机进行自适应实验"
+          description="老虎机自动将更多流量引导至更好的变体。"
           commercialFeature="multi-armed-bandits"
           learnMoreLink="https://docs.growthbook.io/bandits/overview"
         />
@@ -160,7 +160,7 @@ const ExperimentsPage = (): React.ReactElement => {
         <div className="mb-3 mt-2">
           <div className="filters md-form row mb-3 align-items-center">
             <div className="col d-flex align-items-center">
-              <h1>Bandits</h1>
+              <h1>老虎机</h1>
             </div>
             <div style={{ flex: 1 }} />
             {canAdd && (
@@ -169,7 +169,7 @@ const ExperimentsPage = (): React.ReactElement => {
                   tipPosition="left"
                   body={
                     hasStickyBucketFeature && !orgStickyBucketing
-                      ? "Enable Sticky Bucketing in your organization settings to run a Bandit"
+                      ? "在您的组织设置中启用粘性分桶以运行老虎机"
                       : undefined
                   }
                   commercialFeature="multi-armed-bandits"
@@ -184,7 +184,7 @@ const ExperimentsPage = (): React.ReactElement => {
                       !orgStickyBucketing
                     }
                   >
-                    Add Bandit
+                    添加老虎机
                   </Button>
                 </PremiumTooltip>
               </div>
@@ -194,8 +194,8 @@ const ExperimentsPage = (): React.ReactElement => {
           {!hasExperiments ? (
             <div className="box py-5 text-center">
               <div className="mx-auto" style={{ maxWidth: 650 }}>
-                <h1>Adaptively experiment with bandits.</h1>
-                <p className="">Run adaptive experiments with Bandits.</p>
+                <h1>使用老虎机进行自适应实验。</h1>
+                <p className="">使用老虎机进行自适应实验。</p>
               </div>
               <div className="d-flex justify-content-center pt-2">
                 <LinkButton
@@ -203,7 +203,7 @@ const ExperimentsPage = (): React.ReactElement => {
                   variant="outline"
                   mr="4"
                 >
-                  Setup Instructions
+                  设置说明
                 </LinkButton>
                 {canAdd && (
                   <PremiumTooltip
@@ -211,7 +211,7 @@ const ExperimentsPage = (): React.ReactElement => {
                     popperStyle={{ top: 15 }}
                     body={
                       hasStickyBucketFeature && !orgStickyBucketing
-                        ? "Enable Sticky Bucketing in your organization settings to run a Bandit"
+                        ? "在您的组织设置中启用粘性分桶以运行老虎机"
                         : undefined
                     }
                     commercialFeature="multi-armed-bandits"
@@ -226,7 +226,7 @@ const ExperimentsPage = (): React.ReactElement => {
                         !orgStickyBucketing
                       }
                     >
-                      Add Bandit
+                      添加老虎机
                     </Button>
                   </PremiumTooltip>
                 )}
@@ -272,12 +272,12 @@ const ExperimentsPage = (): React.ReactElement => {
                           }}
                           title={
                             active && tabs.length > 1
-                              ? `Hide ${tab} experiments`
+                              ? `隐藏 ${tab} 实验`
                               : active
-                                ? `Remove filter`
+                                ? `删除筛选器`
                                 : tabs.length === 0
-                                  ? `View only ${tab} experiments`
-                                  : `Include ${tab} experiments`
+                                  ? `仅查看 ${tab} 实验`
+                                  : `包括 ${tab} 实验`
                           }
                         >
                           <span className="mr-1">
@@ -296,7 +296,7 @@ const ExperimentsPage = (): React.ReactElement => {
                 </div>
                 <div className="col-auto">
                   <Field
-                    placeholder="Search..."
+                    placeholder="搜索..."
                     type="search"
                     {...searchInputProps}
                   />
@@ -313,7 +313,7 @@ const ExperimentsPage = (): React.ReactElement => {
                       setShowMineOnly(value);
                     }}
                   />{" "}
-                  My Bandits Only
+                  仅我的老虎机
                 </div>
               </div>
 
@@ -322,29 +322,29 @@ const ExperimentsPage = (): React.ReactElement => {
                   <tr>
                     <th></th>
                     <SortableTH field="name" className="w-100">
-                      Bandit
+                      老虎机
                     </SortableTH>
                     {showProjectColumn && (
-                      <SortableTH field="projectName">Project</SortableTH>
+                      <SortableTH field="projectName">项目</SortableTH>
                     )}
-                    <SortableTH field="tags">Tags</SortableTH>
-                    <SortableTH field="ownerName">Owner</SortableTH>
-                    <SortableTH field="date">Date</SortableTH>
-                    <SortableTH field="status">Status</SortableTH>
+                    <SortableTH field="tags">标签</SortableTH>
+                    <SortableTH field="ownerName">所有者</SortableTH>
+                    <SortableTH field="date">日期</SortableTH>
+                    <SortableTH field="status">状态</SortableTH>
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.slice(start, end).map((e) => {
                     return (
                       <tr key={e.id} className="hover-highlight">
-                        <td data-title="Watching status:" className="watching">
+                        <td data-title="关注状态：" className="watching">
                           <WatchButton
                             item={e.id}
                             itemType="experiment"
                             type="icon"
                           />
                         </td>
-                        <td data-title="Bandit name:" className="p-0">
+                        <td data-title="老虎机名称：" className="p-0">
                           <Link
                             href={`/bandit/${e.id}`}
                             className="d-block p-2"
@@ -355,7 +355,7 @@ const ExperimentsPage = (): React.ReactElement => {
                                 {e.hasVisualChangesets ? (
                                   <Tooltip
                                     className="d-flex align-items-center ml-2"
-                                    body="Visual experiment"
+                                    body="可视化实验"
                                   >
                                     <RxDesktop className="text-blue" />
                                   </Tooltip>
@@ -363,7 +363,7 @@ const ExperimentsPage = (): React.ReactElement => {
                                 {(e.linkedFeatures || []).length > 0 ? (
                                   <Tooltip
                                     className="d-flex align-items-center ml-2"
-                                    body="Linked Feature Flag"
+                                    body="关联的功能标志"
                                   >
                                     <BsFlag className="text-blue" />
                                   </Tooltip>
@@ -371,7 +371,7 @@ const ExperimentsPage = (): React.ReactElement => {
                                 {e.hasURLRedirects ? (
                                   <Tooltip
                                     className="d-flex align-items-center ml-2"
-                                    body="URL Redirect experiment"
+                                    body="URL 重定向实验"
                                   >
                                     <PiShuffle className="text-blue" />
                                   </Tooltip>
@@ -380,7 +380,7 @@ const ExperimentsPage = (): React.ReactElement => {
                               {isFiltered && e.trackingKey && (
                                 <span
                                   className="testid text-muted small"
-                                  title="Experiment Id"
+                                  title="实验 ID"
                                 >
                                   {e.trackingKey}
                                 </span>
@@ -389,47 +389,47 @@ const ExperimentsPage = (): React.ReactElement => {
                           </Link>
                         </td>
                         {showProjectColumn && (
-                          <td className="nowrap" data-title="Project:">
+                          <td className="nowrap" data-title="项目：">
                             {e.projectIsDeReferenced ? (
                               <Tooltip
                                 body={
                                   <>
-                                    Project <code>{e.project}</code> not found
+                                    项目 <code>{e.project}</code> 未找到
                                   </>
                                 }
                               >
                                 <span className="text-danger">
-                                  Invalid project
+                                  无效的项目
                                 </span>
                               </Tooltip>
                             ) : (
-                              (e.projectName ?? <em>None</em>)
+                              (e.projectName ?? <em>无</em>)
                             )}
                           </td>
                         )}
 
-                        <td data-title="Tags:" className="table-tags">
+                        <td data-title="标签：" className="table-tags">
                           <SortedTags
                             tags={Object.values(e.tags)}
                             useFlex={true}
                           />
                         </td>
-                        <td className="nowrap" data-title="Owner:">
+                        <td className="nowrap" data-title="所有者：">
                           {e.ownerName}
                         </td>
                         <td className="nowrap" title={datetime(e.date)}>
                           {e.tab === "running"
-                            ? "started"
+                            ? "已开始"
                             : e.tab === "drafts"
-                              ? "created"
+                              ? "已创建"
                               : e.tab === "stopped"
-                                ? "ended"
+                                ? "已结束"
                                 : e.tab === "archived"
-                                  ? "updated"
+                                  ? "已更新"
                                   : ""}{" "}
                           {date(e.date)}
                         </td>
-                        <td className="nowrap" data-title="Status:">
+                        <td className="nowrap" data-title="状态：">
                           <ExperimentStatusIndicator experimentData={e} />
                         </td>
                       </tr>

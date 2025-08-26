@@ -30,7 +30,7 @@ export default function ExperimentLookupPage() {
         }
       })
       .catch((e) => {
-        setError(e.message || "An error occurred");
+        setError(e.message || "发生错误");
       });
   }, [trackingKey, apiCall, router]);
 
@@ -44,10 +44,10 @@ export default function ExperimentLookupPage() {
 
   return (
     <div className="container-fluid pagecontents pt-4">
-      <Callout status="error">Experiment not found</Callout>
+      <Callout status="error">未找到实验</Callout>
       <div className="mt-3 px-3">
         <Link href="/experiments" size="3">
-          All Experiments
+          所有实验
         </Link>
       </div>
     </div>

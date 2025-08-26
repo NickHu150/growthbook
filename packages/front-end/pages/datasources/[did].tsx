@@ -109,7 +109,7 @@ const DataSourcePage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          Datasource <code>{did}</code> does not exist.
+          数据源 <code>{did}</code> 不存在。
         </div>
       </div>
     );
@@ -122,7 +122,7 @@ const DataSourcePage: FC = () => {
     <div className="container pagecontents">
       <PageHead
         breadcrumb={[
-          { display: "Data Sources", href: "/datasources" },
+          { display: "数据源", href: "/datasources" },
           { display: d.name },
         ]}
       />
@@ -132,8 +132,7 @@ const DataSourcePage: FC = () => {
       ) && (
         <div className="alert alert-info mb-3 d-flex align-items-center mt-3">
           <div className="flex-1">
-            This is part of our sample dataset. You can safely delete this once
-            you are done exploring.
+            这是我们示例数据集的一部分。您可以在探索完毕后安全地删除它。
           </div>
           <div style={{ width: 180 }} className="ml-2">
             <DeleteDemoDatasourceButton
@@ -146,9 +145,9 @@ const DataSourcePage: FC = () => {
 
       {d.decryptionError && (
         <div className="alert alert-danger mb-2 d-flex justify-content-between align-items-center">
-          <strong>Error Decrypting Data Source Credentials.</strong>{" "}
+          <strong>解密数据源凭据时出错。</strong>{" "}
           <DocLink docSection="env_prod" className="btn btn-primary">
-            View instructions for fixing
+            查看修复说明
           </DocLink>
         </div>
       )}
@@ -161,7 +160,7 @@ const DataSourcePage: FC = () => {
             label={
               <>
                 <PiLinkBold />
-                Connected
+                已连接
               </>
             }
             color="green"
@@ -183,7 +182,7 @@ const DataSourcePage: FC = () => {
                     setEditConn(true);
                   }}
                 >
-                  Edit Connection Info
+                  编辑连接信息
                 </a>
               )}
               <hr className="m-2" />
@@ -192,7 +191,7 @@ const DataSourcePage: FC = () => {
                 docSection={d.type as DocSection}
                 fallBackSection="datasources"
               >
-                View Documentation
+                查看文档
               </DocLink>
               {d?.properties?.supportsInformationSchema && (
                 <a
@@ -203,14 +202,14 @@ const DataSourcePage: FC = () => {
                     setViewSqlExplorer(true);
                   }}
                 >
-                  View SQL Explorer
+                  查看 SQL 浏览器
                 </a>
               )}
               <Link
                 href={`/datasources/queries/${did}`}
                 className="dropdown-item"
               >
-                View Queries
+                查看查询
               </Link>
               {canDelete && (
                 <>
@@ -219,7 +218,7 @@ const DataSourcePage: FC = () => {
                     displayName={d.name}
                     className="dropdown-item text-danger"
                     useIcon={false}
-                    text={`Delete "${d.name}" Datasource`}
+                    text={`删除 "${d.name}" 数据源`}
                     onClick={async () => {
                       await apiCall(`/datasource/${d.id}`, {
                         method: "DELETE",
@@ -241,15 +240,15 @@ const DataSourcePage: FC = () => {
       )}
       <Flex align="center" gap="4" mt="3">
         <Text color="gray">
-          <Text weight="medium">Type:</Text>{" "}
-          {d.type === "growthbook_clickhouse" ? "managed" : d.type}
+          <Text weight="medium">类型：</Text>{" "}
+          {d.type === "growthbook_clickhouse" ? "托管" : d.type}
         </Text>
         <Text color="gray">
-          <Text weight="medium">Last Updated:</Text>{" "}
+          <Text weight="medium">最后更新：</Text>{" "}
           {datetime(d.dateUpdated ?? "")}
         </Text>
         <Box>
-          Projects:{" "}
+          项目：{" "}
           {d?.projects?.length || 0 > 0 ? (
             <ProjectBadges resourceType="data source" projectIds={d.projects} />
           ) : (
@@ -261,7 +260,7 @@ const DataSourcePage: FC = () => {
       {!d.properties?.hasSettings && (
         <Box mt="3">
           <Callout status="info">
-            This data source does not require any additional configuration.
+            此数据源不需要任何其他配置。
           </Callout>
         </Box>
       )}
@@ -279,15 +278,14 @@ const DataSourcePage: FC = () => {
 
             {d.type === "mixpanel" && (
               <div>
-                <h3>Mixpanel Tracking Instructions</h3>
+                <h3>Mixpanel 跟踪说明</h3>
                 <p>
-                  This example is for Javascript and uses the above settings.
-                  Other languages should be similar.
+                  此示例适用于 Javascript 并使用上述设置。其他语言应类似。
                 </p>
                 <Code
                   language="javascript"
                   code={`
-// Tracking Callback for GrowthBook SDK
+// GrowthBook SDK 的跟踪回调
 const growthbook = new GrowthBook({
   ...,
   trackingCallback: function(experiment, result) {
@@ -305,7 +303,7 @@ const growthbook = new GrowthBook({
   }
 })
 
-// When Mixpanel loads, pass the distinct_id into the SDK
+// 当 Mixpanel 加载时，将 distinct_id 传递到 SDK 中
 mixpanel.init('YOUR PROJECT TOKEN', {
   loaded: function(mixpanel) {
     growthbook.setAttributes({
@@ -326,14 +324,13 @@ mixpanel.init('YOUR PROJECT TOKEN', {
               <>
                 <Frame>
                   <Heading as="h3" size="4" mb="2">
-                    Sending Events
+                    发送事件
                   </Heading>
                   <Text>
                     <DocLink docSection="managedWarehouseTracking">
-                      Read our full docs
+                      阅读我们的完整文档
                     </DocLink>{" "}
-                    with instructions on how to send events from your app to
-                    GrowthBook.
+                    以及有关如何从您的应用向 GrowthBook 发送事件的说明。
                   </Text>
                 </Frame>
                 <Frame>
@@ -350,9 +347,7 @@ mixpanel.init('YOUR PROJECT TOKEN', {
                 {d.dateUpdated === d.dateCreated &&
                   d?.settings?.schemaFormat !== "custom" && (
                     <Callout status="info" mt="4">
-                      We have prefilled the identifiers and assignment queries
-                      below. These queries may require editing to fit your data
-                      structure.
+                      我们已在下面预先填写了标识符和分配查询。这些查询可能需要编辑以适合您的数据结构。
                     </Callout>
                   )}
 
@@ -440,7 +435,7 @@ mixpanel.init('YOUR PROJECT TOKEN', {
           close={() => setViewSqlExplorer(false)}
           mutate={mutateDefinitions}
           disableSave={true}
-          header="SQL Explorer"
+          header="SQL 浏览器"
           lockDatasource={true}
           trackingEventModalSource="datasource-id-page"
         />

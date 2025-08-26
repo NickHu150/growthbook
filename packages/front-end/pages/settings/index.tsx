@@ -344,7 +344,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
       !transformedOrgSettings.featureKeyExample.match(/^[a-zA-Z0-9_.:|-]+$/)
     ) {
       throw new Error(
-        "Feature key examples can only include letters, numbers, hyphens, and underscores.",
+        "功能键示例只能包含字母、数字、连字符和下划线。",
       );
     }
 
@@ -355,7 +355,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
         !transformedOrgSettings.featureRegexValidator
       ) {
         throw new Error(
-          "Feature key example must not be empty when a regex validator is defined.",
+          "定义正则表达式验证器时，功能键示例不能为空。",
         );
       }
 
@@ -366,7 +366,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
         )
       ) {
         throw new Error(
-          `Feature key example does not match the regex validator. '${transformedOrgSettings.featureRegexValidator}' Example: '${transformedOrgSettings.featureKeyExample}'`,
+          `功能键示例与正则表达式验证器不匹配。 '${transformedOrgSettings.featureRegexValidator}' 示例: '${transformedOrgSettings.featureKeyExample}'`,
         );
       }
     }
@@ -387,7 +387,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
     <FormProvider {...form}>
       <Box className="container-fluid pagecontents" mb="4">
         <Heading as="h1" size="5" mb="3">
-          General Settings
+          常规设置
         </Heading>
         <Box mb="5">
           <OrganizationAndLicenseSettings
@@ -398,18 +398,18 @@ const GeneralSettingsPage = (): React.ReactElement => {
 
         <Tabs defaultValue="experiment" persistInURL={true}>
           <StickyTabsList>
-            <TabsTrigger value="experiment">Experiment Settings</TabsTrigger>
-            <TabsTrigger value="feature">Feature Settings</TabsTrigger>
-            <TabsTrigger value="metrics">Metrics &amp; Data</TabsTrigger>
-            <TabsTrigger value="import">Import &amp; Export</TabsTrigger>
+            <TabsTrigger value="experiment">实验设置</TabsTrigger>
+            <TabsTrigger value="feature">功能设置</TabsTrigger>
+            <TabsTrigger value="metrics">指标与数据</TabsTrigger>
+            <TabsTrigger value="import">导入与导出</TabsTrigger>
             <TabsTrigger value="custom">
               <PremiumTooltip commercialFeature="custom-markdown">
-                Custom Markdown
+                自定义 Markdown
               </PremiumTooltip>
             </TabsTrigger>
             <TabsTrigger value="ai">
               <PremiumTooltip commercialFeature="ai-suggestions">
-                AI Settings
+                AI 设置
               </PremiumTooltip>
             </TabsTrigger>
           </StickyTabsList>
@@ -452,17 +452,17 @@ const GeneralSettingsPage = (): React.ReactElement => {
                 <Flex>
                   <Box width="300px">
                     <PremiumTooltip commercialFeature="custom-markdown">
-                      Custom Markdown
+                      自定义 Markdown
                     </PremiumTooltip>
                   </Box>
                   <Box>
                     {hasCommercialFeature("custom-markdown") ? (
                       <Link href="/settings/custom-markdown">
-                        View Custom Markdown Settings
+                        查看自定义 Markdown 设置
                       </Link>
                     ) : (
                       <span className="text-muted">
-                        View Custom Markdown Settings
+                        查看自定义 Markdown 设置
                       </span>
                     )}
                   </Box>
@@ -494,7 +494,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
                   setSaveMsg(false);
                 }}
               >
-                Settings saved
+                设置已保存
               </TempMessage>
             )}
           </Flex>
@@ -509,7 +509,7 @@ const GeneralSettingsPage = (): React.ReactElement => {
               }}
               setError={setSubmitError}
             >
-              Save All
+              全部保存
             </Button>
           </Box>
         </Box>

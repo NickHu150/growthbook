@@ -73,7 +73,7 @@ const BanditExperimentPage = (): ReactElement => {
   }, [data, router]);
 
   if (error) {
-    return <div>There was a problem loading the experiment</div>;
+    return <div>加载实验时出现问题</div>;
   }
   if (!data) {
     return <LoadingOverlay />;
@@ -156,7 +156,7 @@ const BanditExperimentPage = (): ReactElement => {
           onClose={() => setDuplicateModalOpen(false)}
           initialValue={{
             ...experiment,
-            name: experiment.name + " (Copy)",
+            name: experiment.name + " (复制)",
             trackingKey: "",
             status: "draft",
             phases: experiment.phases.map((p, i) => {
@@ -196,10 +196,10 @@ const BanditExperimentPage = (): ReactElement => {
         <EditProjectForm
           label={
             <>
-              Projects{" "}
+              项目{" "}
               <Tooltip
                 body={
-                  "The dropdown below has been filtered to only include projects where you have permission to update Experiments"
+                  "下面的下拉列表已筛选为仅包括您有权更新实验的项目"
                 }
               />
             </>
@@ -217,8 +217,7 @@ const BanditExperimentPage = (): ReactElement => {
               experiment.hasVisualChangesets ||
               experiment.hasURLRedirects) ? (
               <div className="alert alert-danger">
-                Changing the project may prevent your linked Feature Flags,
-                Visual Changes, and URL Redirects from being sent to users.
+                更改项目可能会阻止您的关联功能标志、视觉更改和 URL 重定向发送给用户。
               </div>
             ) : null
           }
@@ -265,7 +264,7 @@ const BanditExperimentPage = (): ReactElement => {
       <PageHead
         breadcrumb={[
           {
-            display: "Bandits",
+            display: "老虎机",
             href: `/bandits`,
           },
           { display: experiment.name },

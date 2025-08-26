@@ -53,7 +53,7 @@ export const EventsPage: FC<EventsPageProps> = ({
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您无权查看此页面。
         </div>
       </div>
     );
@@ -63,13 +63,13 @@ export const EventsPage: FC<EventsPageProps> = ({
     <div className="container py-4">
       <div className="row">
         <div className="col">
-          <h1>Events</h1>
+          <h1>事件</h1>
         </div>
 
         <div className="col-auto text-right align-items-end">
           <PremiumTooltip
             commercialFeature="audit-logging"
-            premiumText="Exporting events is available to Enterprise customers"
+            premiumText="导出事件适用于企业客户"
           >
             <Button
               onClick={performDownload}
@@ -77,7 +77,7 @@ export const EventsPage: FC<EventsPageProps> = ({
               ml="3"
               icon={<FaDownload />}
             >
-              Export All
+              全部导出
             </Button>
           </PremiumTooltip>
         </div>
@@ -91,12 +91,12 @@ export const EventsPage: FC<EventsPageProps> = ({
       </div>
       {error && (
         <div className="alert alert-danger mt-2">
-          There was an error loading the events.
+          加载事件时出错。
         </div>
       )}
       {hasExportError && (
         <div className="alert alert-danger mt-2">
-          There was an error exporting the events.
+          导出事件时出错。
         </div>
       )}
 
@@ -114,7 +114,7 @@ export const EventsPage: FC<EventsPageProps> = ({
                   });
                 }}
               >
-                Date{" "}
+                日期{" "}
                 <a
                   href="#"
                   className={
@@ -133,9 +133,9 @@ export const EventsPage: FC<EventsPageProps> = ({
                 </a>
               </span>
             </th>
-            <th>Type</th>
-            <th>By</th>
-            <th>Data</th>
+            <th>类型</th>
+            <th>由</th>
+            <th>数据</th>
             <th></th>
           </tr>
         </thead>
@@ -146,12 +146,11 @@ export const EventsPage: FC<EventsPageProps> = ({
               <td colSpan={5}>
                 {hasFilters ? (
                   <div className="text-center">
-                    No events were found that match the filters.
+                    未找到与筛选器匹配的事件。
                   </div>
                 ) : (
                   <div className="text-center">
-                    No events were found. Events are created when users interact
-                    with the system.
+                    未找到任何事件。当用户与系统交互时会创建事件。
                   </div>
                 )}
               </td>
@@ -218,7 +217,7 @@ export const EventsPageContainer = () => {
       <div>
         <MultiSelectField
           value={eventType}
-          placeholder="Filter event type"
+          placeholder="筛选事件类型"
           sort={false}
           options={eventTypeOptions}
           onChange={(value: string[]) => {
@@ -227,7 +226,7 @@ export const EventsPageContainer = () => {
         />
       </div>
       <div className="d-inline-flex align-items-center">
-        <label className="mb-0 mr-2">From</label>
+        <label className="mb-0 mr-2">从</label>
         <DatePicker
           date={fromDate}
           setDate={setFromDate}
@@ -237,7 +236,7 @@ export const EventsPageContainer = () => {
         />
       </div>
       <div className="d-inline-flex align-items-center">
-        <label className="mb-0 mr-2">To</label>
+        <label className="mb-0 mr-2">到</label>
         <DatePicker
           date={toDate}
           setDate={setToDate}
@@ -257,7 +256,7 @@ export const EventsPageContainer = () => {
               setToDate(undefined);
             }}
           >
-            Clear filters
+            清除筛选器
           </Link>
         </div>
       )}
@@ -266,7 +265,7 @@ export const EventsPageContainer = () => {
         <SelectField
           containerClassName="ml-2 d-flex align-items-center mb-0"
           labelClassName="mr-2 mb-0"
-          label="Show"
+          label="显示"
           options={[
             {
               label: "10",

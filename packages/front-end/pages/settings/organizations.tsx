@@ -16,9 +16,7 @@ const CreateOrJoinOrganizationPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          This page is only available for self-hosted multi-org customers with
-          either SHOW_MULTI_ORG_SELF_SELECTOR or ALLOW_SELF_ORG_CREATION
-          environment variables enabled.
+          此页面仅适用于启用了 SHOW_MULTI_ORG_SELF_SELECTOR 或 ALLOW_SELF_ORG_CREATION 环境变量的自托管多组织客户。
         </div>
       </div>
     );
@@ -28,8 +26,8 @@ const CreateOrJoinOrganizationPage: FC = () => {
     <div className="container-fluid pagecontents">
       <CreateOrJoinOrganization
         showFrame={false}
-        title="Join another organization"
-        subtitle="Select the organization you would like to join."
+        title="加入另一个组织"
+        subtitle="选择您要加入的组织。"
       />
     </div>
   );

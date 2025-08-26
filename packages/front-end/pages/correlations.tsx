@@ -4,9 +4,9 @@ import MetricCorrelations from "@/enterprise/components/Insights/MetricCorrelati
 const MetricCorrelationsPage = (): React.ReactElement => {
   return (
     <Box className="contents container-fluid pagecontents my-3">
-      <Heading>Metric Correlations</Heading>
+      <Heading>指标关联</Heading>
       <Box mb="2">
-        <Text>View how two metrics are jointly impacted by experiments.</Text>
+        <Text>查看两个指标如何共同受到实验的影响。</Text>
       </Box>
       <MetricCorrelations />
     </Box>

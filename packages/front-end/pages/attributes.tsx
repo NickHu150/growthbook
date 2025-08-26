@@ -135,7 +135,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
         <td className="text-gray font-weight-bold" style={{ width: "17%" }}>
           {v.property}{" "}
           {v.archived && (
-            <span className="badge badge-secondary ml-2">archived</span>
+            <span className="badge badge-secondary ml-2">已存档</span>
           )}
         </td>
         <td className="text-gray" style={{ width: "38%" }}>
@@ -187,7 +187,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                   {features.length > 0 && (
                     <>
                       <div className="mt-1 text-muted font-weight-bold">
-                        Features:
+                        功能：
                       </div>
                       <div className="mb-2">
                         <ul className="pl-3 mb-0">
@@ -205,7 +205,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                                 </li>
                               ) : j === MAX_REFERENCES_PER_TYPE ? (
                                 <li key={"f_" + j} className="my-1">
-                                  <em>{features.length - j} more...</em>
+                                  <em>{features.length - j} 更多...</em>
                                 </li>
                               ) : null}
                             </Fragment>
@@ -217,7 +217,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                   {experiments.length > 0 && (
                     <>
                       <div className="mt-1 text-muted font-weight-bold">
-                        Experiments:
+                        实验：
                       </div>
                       <div className="mb-2">
                         <ul className="pl-3 mb-0">
@@ -235,7 +235,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                                 </li>
                               ) : j === MAX_REFERENCES_PER_TYPE ? (
                                 <li key={"e_" + j} className="my-1">
-                                  <em>{experiments.length - j} more...</em>
+                                  <em>{experiments.length - j} 更多...</em>
                                 </li>
                               ) : null}
                             </Fragment>
@@ -247,7 +247,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                   {groups.length > 0 && (
                     <>
                       <div className="mt-1 text-muted font-weight-bold">
-                        Condition Groups:
+                        条件组：
                       </div>
                       <div className="mb-2">
                         <ul className="pl-3 mb-0">
@@ -265,7 +265,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                                 </li>
                               ) : j === MAX_REFERENCES_PER_TYPE ? (
                                 <li key={"g_" + j} className="my-1">
-                                  <em>{groups.length - j} more...</em>
+                                  <em>{groups.length - j} 更多...</em>
                                 </li>
                               ) : null}
                             </Fragment>
@@ -292,7 +292,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
               {numReferences > MAX_REFERENCES
                 ? MAX_REFERENCES + "+"
                 : numReferences}{" "}
-              reference
+              参考
               {numReferences !== 1 && "s"}
               {showReferences === i ? (
                 <BiHide className="ml-2" />
@@ -313,7 +313,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                     setModalData(v.property);
                   }}
                 >
-                  Edit
+                  编辑
                 </button>
               )}
               <button
@@ -338,18 +338,18 @@ const FeatureAttributesPage = (): React.ReactElement => {
                   refreshOrganization();
                 }}
               >
-                {v.archived ? "Unarchive" : "Archive"}
+                {v.archived ? "取消存档" : "存档"}
               </button>
               <DeleteButton
-                displayName="Attribute"
+                displayName="属性"
                 deleteMessage={
                   <>
-                    Are you sure you want to delete the{" "}
-                    {v.hashAttribute ? "identifier " : ""}
-                    {v.datatype} attribute:{" "}
-                    <code className="font-weight-bold">{v.property}</code>?
+                    您确定要删除{" "}
+                    {v.hashAttribute ? "标识符 " : ""}
+                    {v.datatype} 属性：{" "}
+                    <code className="font-weight-bold">{v.property}</code>？
                     <br />
-                    This action cannot be undone.
+                    此操作无法撤消。
                   </>
                 }
                 className="dropdown-item text-danger"
@@ -362,7 +362,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                   });
                   refreshOrganization();
                 }}
-                text="Delete"
+                text="删除"
                 useIcon={false}
               />
             </MoreMenu>
@@ -379,33 +379,31 @@ const FeatureAttributesPage = (): React.ReactElement => {
           <div className="row mb-3 align-items-center">
             <div className="col">
               <div className="d-flex mb-1">
-                <h1>Targeting Attributes</h1>
+                <h1>定位属性</h1>
                 {canCreateAttributes && (
                   <div className="ml-auto">
                     <Button onClick={() => setModalData("")}>
-                      Add Attribute
+                      添加属性
                     </Button>
                   </div>
                 )}
               </div>
               <p className="text-gray">
-                These attributes can be used when targeting feature flags and
-                experiments. Attributes set here must also be passed in through
-                the SDK.
+                这些属性可用于定位功能标志和实验。此处设置的属性也必须通过 SDK 传入。
               </p>
             </div>
           </div>
           <table className="table gbtable appbox table-hover">
             <thead>
               <tr>
-                <th>Attribute</th>
-                <th>Description</th>
-                <th>Data Type</th>
-                <th>Projects</th>
-                <th>References</th>
+                <th>属性</th>
+                <th>描述</th>
+                <th>数据类型</th>
+                <th>项目</th>
+                <th>参考</th>
                 <th>
-                  Identifier{" "}
-                  <Tooltip body="Any attribute that uniquely identifies a user, account, device, or similar.">
+                  标识符{" "}
+                  <Tooltip body="唯一标识用户、帐户、设备或类似实体的任何属性。">
                     <FaQuestionCircle
                       style={{ position: "relative", top: "-1px" }}
                     />
@@ -421,7 +419,7 @@ const FeatureAttributesPage = (): React.ReactElement => {
                 <>
                   <tr>
                     <td colSpan={7} className="text-center text-gray">
-                      <em>No attributes defined.</em>
+                      <em>未定义任何属性。</em>
                     </td>
                   </tr>
                 </>

@@ -44,7 +44,7 @@ export default function SqlQueryDetail() {
     return (
       <div className="container pagecontents">
         <Callout status="error">
-          Failed to load saved query: {error.message}
+          加载保存的查询失败：{error.message}
         </Callout>
       </div>
     );
@@ -69,7 +69,7 @@ export default function SqlQueryDetail() {
     <div className="container pagecontents">
       <PageHead
         breadcrumb={[
-          { display: "SQL Explorer", href: "/sql-explorer" },
+          { display: "SQL 浏览器", href: "/sql-explorer" },
           { display: savedQuery.name },
         ]}
       />
@@ -78,7 +78,7 @@ export default function SqlQueryDetail() {
         <Box flexGrow="1" />
         <Box>
           <Text color="gray" size="1">
-            Refreshed{" "}
+            已刷新{" "}
             <span title={datetime(savedQuery.dateUpdated)}>
               {ago(savedQuery.dateUpdated)}
             </span>
@@ -111,12 +111,12 @@ export default function SqlQueryDetail() {
             }}
             variant="solid"
           >
-            Refresh
+            刷新
           </Button>
         )}
         {canEdit && (
           <Button onClick={() => setEditModalOpen(true)} variant="outline">
-            Edit
+            编辑
           </Button>
         )}
         <MoreMenu useRadix={true}>
@@ -129,9 +129,9 @@ export default function SqlQueryDetail() {
                 });
                 router.push("/sql-explorer");
               }}
-              displayName="Saved Query"
+              displayName="保存的查询"
               useIcon={false}
-              text="Delete"
+              text="删除"
             />
           )}
         </MoreMenu>
@@ -140,7 +140,7 @@ export default function SqlQueryDetail() {
       {datasource ? (
         <Flex gap="3" mb="3">
           <Box>
-            Data Source:{" "}
+            数据源：{" "}
             <Link href={`/datasources/${datasource?.id}`}>
               <strong>{datasource?.name}</strong>
             </Link>
@@ -157,7 +157,7 @@ export default function SqlQueryDetail() {
             error={debugResults.error}
             allowDownload={false}
             showSampleHeader={false}
-            renderedSQLLabel="Refresh Error"
+            renderedSQLLabel="刷新错误"
             close={() => setDebugResults(null)}
           />
         )}

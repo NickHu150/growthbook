@@ -99,17 +99,17 @@ export default function SetupFlow() {
   if (!canUseSetupFlow) {
     return (
       <div className="alert alert-warning mt-5">
-        You do not have permission to use this setup flow.
+        您无权使用此设置流程。
       </div>
     );
   }
 
   return (
     <div className="container pagecontents pt-5" style={{ maxWidth: "1100px" }}>
-      <PageHead breadcrumb={[{ display: "< Exit Setup", href: exitHref }]} />
+      <PageHead breadcrumb={[{ display: "< 退出设置", href: exitHref }]} />
       {step < 2 && (
         <h1 style={{ padding: "0px 65px" }}>
-          Setup GrowthBook for {organization.name}
+          为 {organization.name} 设置 GrowthBook
         </h1>
       )}
       <PagedModal
@@ -117,8 +117,8 @@ export default function SetupFlow() {
         header={""}
         submit={async () => {}}
         hideCta={step >= 2}
-        cta={"Next"}
-        closeCta="Cancel"
+        cta={"下一步"}
+        closeCta="取消"
         step={step}
         setStep={(step) => {
           if (skipped.has(step)) {
@@ -151,7 +151,7 @@ export default function SetupFlow() {
       >
         <Page
           enabled={!connection}
-          display="Initiate Connection"
+          display="启动连接"
           validate={sdkConnectionForm.handleSubmit(async (value) => {
             if (connection) {
               return Promise.resolve();
@@ -227,7 +227,7 @@ export default function SetupFlow() {
           })}
         >
           <div style={{ padding: "0px 49px" }}>
-            <h2>Select your SDK Language</h2>
+            <h2>选择您的 SDK 语言</h2>
             <SDKLanguageSelector
               value={[sdkConnectionForm.watch("languages")[0]]}
               setValue={([language]) => {
@@ -244,7 +244,7 @@ export default function SetupFlow() {
         </Page>
 
         <Page
-          display="Verify Connection"
+          display="验证连接"
           customNext={() => {
             setSDKConnectionModalOpen(true);
           }}

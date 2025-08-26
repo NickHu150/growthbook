@@ -28,7 +28,7 @@ const TeamPage: FC = () => {
     return (
       <div className="container pagecontents">
         <div className="alert alert-danger">
-          You do not have access to view this page.
+          您没有权限查看此页面。
         </div>
       </div>
     );
@@ -39,9 +39,9 @@ const TeamPage: FC = () => {
       <Tabs defaultValue="members">
         <Box mb="5">
           <TabsList>
-            <TabsTrigger value="members">Members</TabsTrigger>
-            <TabsTrigger value="teams">Teams</TabsTrigger>
-            <TabsTrigger value="roles">Roles</TabsTrigger>
+            <TabsTrigger value="members">成员</TabsTrigger>
+            <TabsTrigger value="teams">团队</TabsTrigger>
+            <TabsTrigger value="roles">角色</TabsTrigger>
           </TabsList>
         </Box>
 
@@ -63,12 +63,11 @@ const TeamPage: FC = () => {
                 <div>
                   <h1>
                     <PremiumTooltip commercialFeature="teams">
-                      Teams
+                      团队
                     </PremiumTooltip>
                   </h1>
                   <div className="text-muted mb-2">
-                    Place organization members into teams to grant permissions
-                    by group.
+                    将组织成员分组到团队中，以便按组授予权限。
                   </div>
                 </div>
               </div>
@@ -78,7 +77,7 @@ const TeamPage: FC = () => {
                   disabled={!hasTeamsFeature}
                   onClick={() => setModalOpen({})}
                 >
-                  Create Team
+                  创建团队
                 </Button>
               </div>
             </div>
@@ -86,8 +85,8 @@ const TeamPage: FC = () => {
               <TeamsList />
             ) : (
               <PremiumEmptyState
-                title="Teams"
-                description="Create groups of GrowthBook users to organize and manage permissions centrally"
+                title="团队"
+                description="创建GrowthBook用户组，以集中组织和管理权限"
                 commercialFeature="teams"
                 learnMoreLink="https://docs.growthbook.io/account/user-permissions#teams"
               />
@@ -102,12 +101,11 @@ const TeamPage: FC = () => {
                 <div>
                   <h1>
                     <PremiumTooltip commercialFeature="custom-roles">
-                      Roles
+                      角色
                     </PremiumTooltip>
                   </h1>
                   <div className="text-muted mb-2">
-                    Create and update roles to customize permissions for your
-                    organization&apos;s users and teams.
+                    创建和更新角色，为您组织的用户和团队自定义权限。
                   </div>
                 </div>
               </div>
@@ -115,7 +113,7 @@ const TeamPage: FC = () => {
               <div className="col-auto">
                 {hasCustomRolesFeature ? (
                   <LinkButton href="/settings/role/new">
-                    Create Custom Role
+                    创建自定义角色
                   </LinkButton>
                 ) : null}
               </div>
@@ -124,8 +122,8 @@ const TeamPage: FC = () => {
               <RoleList />
             ) : (
               <PremiumEmptyState
-                title="Custom Roles"
-                description="Custom roles allows you to adjust permissions and assign those roles to members or teams"
+                title="自定义角色"
+                description="自定义角色允许您调整权限并将这些角色分配给成员或团队"
                 commercialFeature="custom-roles"
                 learnMoreLink="https://docs.growthbook.io/account/user-permissions#custom-roles"
               />
